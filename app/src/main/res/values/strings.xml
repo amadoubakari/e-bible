@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- nom de l'application -->
+  <string name="app_name">ƁIMUTOHO MIPAL</string>
+  <string name="Open">OPEN</string>
+  <string name="Close">CLOSE</string>
+</resources>
