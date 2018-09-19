@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by User on 07/09/2018.
  */
 
-public class Data implements Serializable {
+public class Data extends BaseEntity  {
 
     private int chapitre;
     private String datas;

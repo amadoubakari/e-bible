@@ -3,6 +3,7 @@ package com.flys.bible.activity;
 import android.util.Log;
 import com.flys.bible.architecture.core.AbstractActivity;
 import com.flys.bible.architecture.core.AbstractFragment;
+import com.flys.bible.architecture.core.ISession;
 import com.flys.bible.architecture.custom.Session;
 import com.flys.bible.dao.service.Dao;
 import com.flys.bible.dao.service.IDao;
@@ -11,7 +12,10 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import com.flys.bible.R;
+import com.flys.bible.fragments.behavior.DummyFragment_;
+import com.flys.bible.fragments.behavior.GeneralSettingsFragment_;
 import com.flys.bible.fragments.behavior.MainFragment_;
+import com.flys.bible.fragments.behavior.SettingsFragment_;
 
 
 @EActivity
@@ -44,7 +48,7 @@ public class MainActivity extends AbstractActivity {
   @Override
   protected AbstractFragment[] getFragments() {
     // todo : définir les fragments ici
-    return new AbstractFragment[]{new MainFragment_()};
+    return new AbstractFragment[]{new MainFragment_(),new DummyFragment_(),new SettingsFragment_(),new GeneralSettingsFragment_()};
   }
 
 
@@ -63,5 +67,26 @@ public class MainActivity extends AbstractActivity {
   protected int getFirstView() {
     // todo : définir le n° de la première vue (fragment) à afficher
     return 0;
+  }
+
+  @Override
+  public boolean onSupportNavigateUp() {
+    return true;
+  }
+
+  //Navigation
+  @Override
+  public void onBackPressed() {
+    navigateToView(session.getPreviousView(), ISession.Action.SUBMIT);
+  }
+
+  @Override
+  public void settings() {
+    navigateToView(2, ISession.Action.SUBMIT);
+  }
+
+  @Override
+  public void home() {
+    navigateToView(0, ISession.Action.SUBMIT);
   }
 }

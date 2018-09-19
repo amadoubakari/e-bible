@@ -1,13 +1,18 @@
 package com.flys.bible.fragments.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flys.bible.R;
+import com.flys.bible.Utils;
 import com.flys.bible.entities.Verset;
 
 import java.util.ArrayList;
@@ -41,9 +46,30 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
 
     @Override
     public void onBindViewHolder(Holderview holder, final int position) {
-        Verset verset=listModels.get(position);
-        holder.number.setText(""+verset.getNumero());
+        Verset verset = listModels.get(position);
+        holder.number.setText("" + verset.getNumero());
         holder.description.setText(verset.getDescription());
+
+        holder.menu.setOnClickListener(view -> {
+            Context wrapper = new ContextThemeWrapper(context, R.style.popupmenu);
+            PopupMenu popupMenu = new PopupMenu(wrapper, holder.menu);
+            popupMenu.setGravity(10);
+            popupMenu.inflate(R.menu.option_menu);
+            popupMenu.setOnMenuItemClickListener(menuItem -> {
+                switch (menuItem.getItemId()) {
+                    case R.id.option_menu_share:
+                        Utils.shareText(context,"Bible",verset.getDescription(),"Titre");
+                        break;
+                    case R.id.option_menu_mark:
+                        Toast.makeText(context, "Marquer", Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            });
+            popupMenu.show();
+        });
 
 
     }
@@ -66,13 +92,14 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
 
         TextView number;
         TextView description;
+        ImageView menu;
 
         public Holderview(View itemView) {
             super(itemView);
 
             number = itemView.findViewById(R.id.number);
             description = itemView.findViewById(R.id.description);
-
+            menu = itemView.findViewById(R.id.option_menu_verset);
         }
     }
 }

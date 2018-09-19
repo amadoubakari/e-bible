@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/bible_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:alpha="0.5"
         app:srcCompat="@drawable/bible" />

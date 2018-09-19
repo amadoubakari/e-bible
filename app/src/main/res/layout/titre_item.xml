@@ -9,7 +9,7 @@
         android:id="@+id/titre_nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily="sans-serif-thin"
         android:gravity="center_horizontal"
         android:text="Ɓi ngi yi Yesu"
         android:textColor="@color/blue_300"

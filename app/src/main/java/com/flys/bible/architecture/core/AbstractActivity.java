@@ -2,10 +2,12 @@ package com.flys.bible.architecture.core;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -226,6 +228,28 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
         if (session.getAction() == ISession.Action.NONE) {
             navigateToView(getFirstView(), ISession.Action.NONE);
         }
+
+        //Navigation drawer
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+
+        navigationView.setNavigationItemSelectedListener(
+                menuItem -> {
+                    // set item as selected to persist highlight
+                    menuItem.setChecked(true);
+                    // close drawer when item is tapped
+                    switch (menuItem.getItemId()) {
+                        case R.id.menu_settings:
+                            settings();
+                            break;
+                        case R.id.menu_home:
+                            home();
+                            break;
+                        default:
+                            break;
+                    }
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    return true;
+                });
         // on passe la main à l'activité fille
         onCreateActivity();
     }
@@ -288,11 +312,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
         dao.setDelay(delay);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
     //Gestion du menu principal
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -335,6 +354,8 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
             return getFragmentTitle(position);
         }
     }
+
+
 
     // classes filles
     protected abstract void onCreateActivity();

@@ -81,9 +81,6 @@ public class MainFragment extends AbstractFragment {
     protected void initView(CoreState previousState) {
         recyclerview.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
-        /*DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerview.getContext(), linearLayoutManager.getOrientation());
-        dividerItemDecoration.getItemOffsets(new Rect(20, 0, 20, 0), null, recyclerview, null);
-        recyclerview.addItemDecoration(dividerItemDecoration);*/
         recyclerview.setLayoutManager(linearLayoutManager);
         titreAdapter = new TitreAdapter(listModels, activity);
         recyclerview.setAdapter(titreAdapter);

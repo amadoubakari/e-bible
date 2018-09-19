@@ -6,7 +6,7 @@ import java.util.List;
  * Created by AMADOU BAKARI on 08/09/2018.
  */
 
-public class Titre {
+public class Titre extends BaseEntity  {
 
     private String nom;
     private List<Verset> versets;

@@ -8,22 +8,70 @@
       },
       {
         "numero":2,
-        "description":"Abraham a yi Izak, Izak a yi Zakop, Zakop a yi Yuda ati sukum naŋhay."
+        "description":"Abraham a yi Izak, Izak a yi Zakop, Zakop a yi Yuda ati sukum naŋhay. "
       }
     ,
       {
         "numero":3,
-        "description":"Abraham a yi Izak, Izak a yi Zakop, Zakop a yi Yuda ati sukum naŋhay."
+        "description":"Yuda a yi Fares ati Zara, mumuŋ taŋ i Tamar. Fares a yi Esrom, Esrom a yi A ram."
       }
     ,
       {
         "numero":4,
-        "description":"Abraham a yi Izak, Izak a yi Zakop, Zakop a yi Yuda ati sukum naŋhay."
+        "description":"A ram a yi Aminadap, Aminadap a yi Naˀasoŋ, Naˀasoŋ a yi Salmaŋ."
       }
     ,
       {
         "numero":5,
-        "description":"Abraham a yi Izak, Izak a yi Zakop, Zakop a yi Yuda ati sukum naŋhay."
+        "description":"Salmaŋ a yi Boˀos, mumuŋ ngi Boˀos i Rahap. Boˀos a yi Yobet, mumuŋ ngi Yobet i Rut. Yobet a yi Zese."
+      },
+      {
+        "numero":6,
+        "description":"Zese a yi Davit buy madiɗa, Davit a yi Salomoŋ ti ngwas ngi Uri zleˀe."
+      },
+      {
+        "numero":7,
+        "description":"Salomoŋ a yi Roboˀam, Roboˀam a yi Abiya, Abiya a yi Asaf."
+      },
+      {
+        "numero":8,
+        "description":"Asaf a yi Zosafat, Zosafat a yi Yoram, Yoram a yi Oziyas."
+      },
+      {
+        "numero":9,
+        "description":"Oziyas a yi Yotaŋ, Yotaŋ a yi Akas, Akas a yi Ezekiyas."
+      },
+      {
+        "numero":10,
+        "description":"Ezekiyas a yi Manase, Manase a yi Amoŋ, Amoŋ a yi Zoziyas. "
+      },
+      {
+        "numero":11,
+        "description":"Zoziyas a yi Yekoniya ati sukum naŋhay, hirak ti taŋ mijaka Israyeley nga Babiloŋ."
+      },
+      {
+        "numero":12,
+        "description":"A dirba taŋ misi i mijahay a Babiloŋ na, Yekoniya a yi Salatiyel, Salatiyel a yi Zorobabel. "
+      },
+      {
+        "numero":13,
+        "description":"Zorobabel a yi Abihut, Abihut a yi Eliyakim, Eliyakim a yi Azor."
+      },
+      {
+        "numero":14,
+        "description":"Azor a yi Sadok, Sadok a yi Asim, Asim a yi Eliyut. "
+      },
+      {
+        "numero":15,
+        "description":"Eliyut a yi Eleyazar, Eleyazar a yi Mataŋ, Mataŋ a yi Zakop. "
+      },
+      {
+        "numero":16,
+        "description":"Zakop a yi Zozef, zil ngi Mariya miya Yesu mazilaka Kristu."
+      },
+      {
+        "numero":17,
+        "description":"Zle avu Abraham hã avu Davit na, a gi le dideˀ dideˀ kuruˀ nga mufaɗa. Zle avu Davit hã avu taŋ mijaka Israyeley nga Babiloŋ na, a gi le dideˀ dideˀ kuruˀ nga mufaɗa. Zle avu taŋ misi i mijahay a Babiloŋ hã avu taŋ miyaka Kristu na kwana, a gi le dideˀ dideˀ kuruˀ nga mufaɗa ma."
       }
     ]
   },
@@ -32,12 +80,36 @@
     "nom":"Ɓi ngi yi Yesu",
     "versets":[
       {
-        "numero":6,
+        "numero":18,
         "description":"Taŋ miyaka Yesu Kristu na, ɓi naŋ a zli anihĩ: Mariya, mumuŋ naŋ, i meketeŋ ngi Zozef, amma zle ti taŋ muɗuvam vu t'aruŋ si na, Mariya a gi hur ti gidaŋ ngi ˀUf Mipal."
       },
       {
-        "numero":7,
-        "description":"Ti Herod mazum buy na, a ya ka Yesu a Beteleyem, hirwuy Yude. A dirba nah, misi sinmijileŋhey a soko tisi pas ngi miprik"
+        "numero":19,
+        "description":"Zil naŋ Zozefe, i mbur mikaslsla, yo naŋ anta wuɗ ɓa a njikaŋ a wuzla mizli ta, amma a wuɗ ɓa a pulaŋ mbak ti mi yaŋ yaŋ si."
+      },
+      {
+        "numero":20,
+        "description":"Ti naŋ mawuluk kanah na, modro ngi Bumbulvuŋ a bigaŋ vu ar musuwun, a ɓaŋ: «Zozef, dideˀ ngi Davit, ki zluwun ta, zuɓa ngwas ɗik Mariya ngi hay ɗiki, asi naŋ migi hur na, i slra ngi ˀUf Mipal."
+      },
+      {
+        "numero":21,
+        "description":"A sa yi mangal mizile, kisa zila Yesu, asi i naŋ masa laha mizli naŋhay avu mungra taŋhaya.»"
+      },
+      {
+        "numero":22,
+        "description":"A gi kahana, ɓa ɓi ngi Bumbulvuŋ mijiviɗ miɓa zleˀe na, a gi muduba, a ɓi na:"
+      },
+      {
+        "numero":23,
+        "description":"«Ani zuŋ diili mungbuˀo kine a sa gi hur, a sa yi mangal mizile. A sa zilaka Emanuyel.» Mbiɗeˀvra: «Buymisemuŋ naŋ da ati ndra.»"
+      },
+      {
+        "numero":24,
+        "description":"Zozefe mupuɗuk na, a ga kaɓa modro ngi Bumbulvuŋ miɓaŋ di tuwaŋ, dar a zuɓa ngwas naŋ Mariya ngra hay naŋ."
+      },
+      {
+        "numero":25,
+        "description":"Amma a gi di ngwas ta, hã Mariya a ya mangala cak, joˀ Zozef a caŋ slimiɗe Yesu."
       }
     ]
   }
