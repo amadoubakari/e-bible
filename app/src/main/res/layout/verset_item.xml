@@ -47,11 +47,11 @@
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="sans-serif-thin"
+                    android:fontFamily="sans-serif-meduim"
                     android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:text="Taŋ miyaka Yesu Kristu na, ɓi naŋ a zli anihĩ: Mariya, mumuŋ naŋ, i meketeŋ ngi Zozef, amma zle ti taŋ muɗuvam vu t'aruŋ si na, Mariya a gi hur ti gidaŋ ngi ˀUf Mipal. "
-                    android:textColor="@color/grey_900"
+                    android:textColor="@color/grey_500"
                     android:textSize="14sp"
                     android:textStyle="normal" />
 

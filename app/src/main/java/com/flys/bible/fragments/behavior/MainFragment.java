@@ -1,14 +1,12 @@
 package com.flys.bible.fragments.behavior;
 
-import android.graphics.Rect;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -17,11 +15,11 @@ import com.flys.bible.R;
 import com.flys.bible.Utils;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.custom.CoreState;
-import com.flys.bible.entities.Titre;
-import com.flys.bible.entities.Verset;
-import com.flys.bible.fragments.adapter.TitreAdapter;
-import com.flys.bible.fragments.adapter.VersetsAdapter;
+import com.flys.bible.entities.Chapitre;
+import com.flys.bible.fragments.adapter.ChapitreAdapter;
+import com.flys.bible.utils.DepthPageTransformer;
 
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
@@ -38,20 +36,55 @@ import java.util.List;
 
 @EFragment(R.layout.fragment_main_layout)
 @OptionsMenu(R.menu.menu_main)
-public class MainFragment extends AbstractFragment {
+public class MainFragment extends AbstractFragment{
 
-    @ViewById(R.id.recyclerview)
-    protected RecyclerView recyclerview;
+    @ViewById(R.id.viewPager)
+    protected ViewPager viewPager;
 
-    //private VersetsAdapter versetsAdapter;
-    private TitreAdapter titreAdapter;
+    @ViewById(R.id.next)
+    protected ImageView next;
 
-    private List<Titre> listModels;
+    @ViewById(R.id.previous)
+    protected ImageView previous;
 
-    SearchView searchView;
+    @ViewById(R.id.chapitre)
+    protected TextView chapitre;
 
     @OptionsMenuItem(R.id.search)
     protected MenuItem menuItem;
+
+    private List<Chapitre> listModels;
+
+    private ChapitreAdapter chapitreAdapter;
+
+    SearchView searchView;
+    private static int currentItem;
+
+
+    @Click(R.id.next)
+    protected void nextChapitre() {
+        Log.e(getClass().getSimpleName(),"next");
+        currentItem=viewPager.getCurrentItem();
+        if(currentItem<=listModels.size()-1){
+            viewPager.setCurrentItem(currentItem++);
+            chapitre.setText(listModels.get(viewPager.getCurrentItem()).getNom());
+
+        }
+
+
+    }
+
+    @Click(R.id.previous)
+    protected void previousChapitre() {
+        Log.e(getClass().getSimpleName(),"previous");
+        currentItem=viewPager.getCurrentItem();
+        if(currentItem>0){
+            viewPager.setCurrentItem(currentItem--);
+            chapitre.setText(listModels.get(viewPager.getCurrentItem()).getNom());
+
+        }
+
+    }
 
     @Override
     public CoreState saveFragment() {
@@ -65,12 +98,13 @@ public class MainFragment extends AbstractFragment {
 
     @Override
     protected void initFragment(CoreState previousState) {
-        listModels=new ArrayList<>();
+        listModels = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
         String jsonInput = Utils.loadJSONFromAsset(activity, "chapitre.json");
         try {
-            List<Titre> data = mapper.readValue(jsonInput, new TypeReference<List<Titre>>(){});
-           listModels=data;
+            listModels = mapper.readValue(jsonInput, new TypeReference<List<Chapitre>>() {
+            });
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,11 +113,11 @@ public class MainFragment extends AbstractFragment {
 
     @Override
     protected void initView(CoreState previousState) {
-        recyclerview.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
-        recyclerview.setLayoutManager(linearLayoutManager);
-        titreAdapter = new TitreAdapter(listModels, activity);
-        recyclerview.setAdapter(titreAdapter);
+        chapitreAdapter = new ChapitreAdapter(activity, listModels);
+        viewPager.setAdapter(chapitreAdapter);
+        viewPager.setPageTransformer(true, new DepthPageTransformer());
+        Log.e(getClass().getSimpleName(), "CurrentItem : "+viewPager.getCurrentItem());
+
     }
 
     @Override
@@ -93,7 +127,6 @@ public class MainFragment extends AbstractFragment {
 
     @Override
     protected void updateOnRestore(CoreState previousState) {
-
     }
 
     @Override
@@ -132,7 +165,6 @@ public class MainFragment extends AbstractFragment {
     }
 
     /**
-     *
      * @param view
      */
     private void changeSearchTextColor(View view) {
@@ -149,4 +181,8 @@ public class MainFragment extends AbstractFragment {
             }
         }
     }
+
+
+
+
 }
