@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.flys.bible.R;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.custom.CoreState;
+import com.flys.bible.utils.ConfigDialogFragment;
 import com.flys.bible.utils.FileUtils;
 
 import org.androidannotations.annotations.Click;
@@ -33,6 +36,9 @@ public class GeneralSettingsFragment extends AbstractFragment {
 
     @ViewById(R.id.profile_image)
     protected CircleImageView profile;
+
+    @ViewById(R.id.edit_profil)
+    protected ImageView editProfile;
 
     private static final int READ_REQUEST_CODE = 42;
 
@@ -58,6 +64,13 @@ public class GeneralSettingsFragment extends AbstractFragment {
         performFileSearch();
     }
 
+    //Edition du profil
+    @Click(R.id.edit_profil)
+    protected void edit(){
+        ConfigDialogFragment configDialogFragment = ConfigDialogFragment.newInstance("AMADOU BAKARI");
+        configDialogFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
+        configDialogFragment.show(getActivity().getSupportFragmentManager(), "fragment_edit_name");
+    }
 
     @Override
     public CoreState saveFragment() {

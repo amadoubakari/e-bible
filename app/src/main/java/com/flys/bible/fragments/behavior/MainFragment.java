@@ -58,32 +58,18 @@ public class MainFragment extends AbstractFragment{
     private ChapitreAdapter chapitreAdapter;
 
     SearchView searchView;
+
     private static int currentItem;
 
 
     @Click(R.id.next)
     protected void nextChapitre() {
-        Log.e(getClass().getSimpleName(),"next");
-        currentItem=viewPager.getCurrentItem();
-        if(currentItem<=listModels.size()-1){
-            viewPager.setCurrentItem(currentItem++);
-            chapitre.setText(listModels.get(viewPager.getCurrentItem()).getNom());
-
-        }
-
-
+        viewPager.setCurrentItem(viewPager.getCurrentItem()+1,true);
     }
 
     @Click(R.id.previous)
     protected void previousChapitre() {
-        Log.e(getClass().getSimpleName(),"previous");
-        currentItem=viewPager.getCurrentItem();
-        if(currentItem>0){
-            viewPager.setCurrentItem(currentItem--);
-            chapitre.setText(listModels.get(viewPager.getCurrentItem()).getNom());
-
-        }
-
+        viewPager.setCurrentItem(viewPager.getCurrentItem()-1,true);
     }
 
     @Override
@@ -158,6 +144,11 @@ public class MainFragment extends AbstractFragment{
             @Override
             public boolean onQueryTextChange(String newText) {
 
+                if (listModels != null) {
+                    List<Chapitre> filterListModels = filter(listModels, newText);
+                    chapitreAdapter.setFilter(filterListModels);
+                }
+
                 return true;
             }
         });
@@ -182,6 +173,24 @@ public class MainFragment extends AbstractFragment{
         }
     }
 
+    /**
+     *
+     * @param list
+     * @param query
+     * @return
+     */
+    private List<Chapitre> filter(List<Chapitre> list, String query) {
+        query = query.toLowerCase();
+        final List<Chapitre> tasks = new ArrayList<>();
+
+        for (Chapitre model : list) {
+            final String text = model.getNom().toLowerCase();
+            if (text.startsWith(query) || text.contains(query)) {
+                tasks.add(model);
+            }
+        }
+        return tasks;
+    }
 
 
 

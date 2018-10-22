@@ -70,6 +70,11 @@ public class MainActivity extends AbstractActivity {
   }
 
   @Override
+  protected boolean isCollapse() {
+    return false;
+  }
+
+  @Override
   public boolean onSupportNavigateUp() {
     return true;
   }

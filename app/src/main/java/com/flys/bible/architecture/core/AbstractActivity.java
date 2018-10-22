@@ -1,7 +1,9 @@
 package com.flys.bible.architecture.core;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -21,6 +23,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flys.bible.R;
+import com.flys.bible.activity.AudioActivity_;
 import com.flys.bible.architecture.custom.CustomTabLayout;
 import com.flys.bible.architecture.custom.IMainActivity;
 import com.flys.bible.architecture.custom.Session;
@@ -54,6 +57,8 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
     private DrawerLayout drawerLayout;
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
+
+    private CollapsingToolbarLayout collapsingToolbarLayout;
 
     // constructeur
     public AbstractActivity() {
@@ -151,6 +156,8 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.main_content);
+
+        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -244,12 +251,17 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
                         case R.id.menu_home:
                             home();
                             break;
+                        case R.id.menu_audio_bible:
+                            startActivity(new Intent(AbstractActivity.this, AudioActivity_.class));
+                            break;
                         default:
                             break;
                     }
                     drawerLayout.closeDrawer(GravityCompat.START);
                     return true;
                 });
+
+
         // on passe la main à l'activité fille
         onCreateActivity();
     }
@@ -356,7 +368,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
     }
 
 
-
     // classes filles
     protected abstract void onCreateActivity();
 
@@ -370,4 +381,5 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
 
     protected abstract int getFirstView();
 
+    protected abstract boolean isCollapse();
 }

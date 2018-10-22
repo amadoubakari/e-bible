@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.flys.bible.R;
 import com.flys.bible.entities.Chapitre;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,6 +63,14 @@ public class ChapitreAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
     }
+
+    public void setFilter(List<Chapitre> listModelsTasks) {
+        chapitres = new ArrayList<>();
+        chapitres.addAll(listModelsTasks);
+        notifyDataSetChanged();
+
+    }
+
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
