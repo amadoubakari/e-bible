@@ -14,12 +14,14 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import static android.content.ContentValues.TAG;
 
@@ -226,6 +228,10 @@ public class FileUtils {
      * @return
      */
     public static BitmapDrawable loadImageFromStorage(String path, String fileName, Context context) {
+
+        ContextWrapper cw = new ContextWrapper(context);
+        File directory = cw.getDir(path, Context.MODE_PRIVATE);
+        path= directory.getAbsolutePath();
         BitmapDrawable background = null;
         try {
             File f = new File(path, fileName);
@@ -257,5 +263,31 @@ public class FileUtils {
         }
     }
 
+    public static String getInternalStorageFolder(Context context) {
+        ContextWrapper cw = new ContextWrapper(context);
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("Cagnottes", Context.MODE_PRIVATE);
+        return directory.getAbsolutePath();
+    }
 
+    /**
+     *
+     * @param context
+     * @param uri
+     * @return
+     * @throws IOException
+     */
+    public static Bitmap getBytes(Context context,Uri uri) throws IOException {
+        InputStream iStream =   context.getContentResolver().openInputStream(uri);
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len = 0;
+        while ((len = iStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return  BitmapFactory.decodeByteArray(byteBuffer.toByteArray(), 0, byteBuffer.toByteArray().length);
+
+    }
 }

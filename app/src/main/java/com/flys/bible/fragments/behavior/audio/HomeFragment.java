@@ -1,11 +1,15 @@
 package com.flys.bible.fragments.behavior.audio;
 
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.flys.bible.R;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.custom.CoreState;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ViewById;
 
 /**
  * Created by User on 17/10/2018.
@@ -13,6 +17,9 @@ import org.androidannotations.annotations.OptionsMenu;
 @EFragment(R.layout.test_layout)
 @OptionsMenu(R.menu.menu_vide)
 public class HomeFragment extends AbstractFragment {
+
+    @ViewById(R.id.helloworld)
+    protected TextView helloworld;
 
     @Override
     public CoreState saveFragment() {
@@ -31,7 +38,7 @@ public class HomeFragment extends AbstractFragment {
 
     @Override
     protected void initView(CoreState previousState) {
-
+        Toast.makeText(activity,"Je suis lancé",Toast.LENGTH_LONG).show();
     }
 
     @Override

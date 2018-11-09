@@ -64,8 +64,5 @@ public class AudioActivity extends AbstractActivity {
         return true;
     }
 
-    @Override
-    public void setContentView(View view) {
-        setContentView(R.layout.activity_audio);
-    }
+
 }

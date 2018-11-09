@@ -1,14 +1,20 @@
 package com.flys.bible.entities;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.util.List;
 
 /**
  * Created by AMADOU BAKARI on 08/09/2018.
  */
 
+@DatabaseTable(tableName = "chapitre")
 public class Chapitre extends BaseEntity {
 
+    @DatabaseField
     private String nom;
+    @DatabaseField
     private int numero;
 
     private List<Titre> titres;

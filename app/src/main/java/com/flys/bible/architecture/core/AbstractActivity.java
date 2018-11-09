@@ -1,21 +1,31 @@
 package com.flys.bible.architecture.core;
 
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import com.flys.bible.utils.CustomTypefaceSpan;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -28,8 +38,12 @@ import com.flys.bible.architecture.custom.CustomTabLayout;
 import com.flys.bible.architecture.custom.IMainActivity;
 import com.flys.bible.architecture.custom.Session;
 import com.flys.bible.dao.service.IDao;
+import com.flys.bible.utils.Constants;
+import com.flys.bible.utils.FileUtils;
 
 import java.io.IOException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public abstract class AbstractActivity extends AppCompatActivity implements IMainActivity {
@@ -59,6 +73,8 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
     private CollapsingToolbarLayout collapsingToolbarLayout;
+
+    private CircleImageView profile;
 
     // constructeur
     public AbstractActivity() {
@@ -190,7 +206,7 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
             AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
             appBarLayout.addView(tabLayout);
             // gestionnaire d'évt de la barre d'onglets
-            tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
                     // un onglet a été sélectionné
@@ -238,7 +254,27 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
 
         //Navigation drawer
         NavigationView navigationView = findViewById(R.id.navigation_view);
+        //Navigation drawer
+        View headerNavView = navigationView.getHeaderView(0);
 
+        Menu m = navigationView.getMenu();
+        for (int i=0;i<m.size();i++) {
+            MenuItem mi = m.getItem(i);
+
+            //for aapplying a font to subMenu ...
+            SubMenu subMenu = mi.getSubMenu();
+            if (subMenu!=null && subMenu.size() >0 ) {
+                for (int j=0; j <subMenu.size();j++) {
+                    MenuItem subMenuItem = subMenu.getItem(j);
+                    applyFontToMenuItem(subMenuItem);
+                }
+            }
+
+            //the method we have create in activity
+            applyFontToMenuItem(mi);
+        }
+
+        profile = headerNavView.findViewById(R.id.profile_image);
         navigationView.setNavigationItemSelectedListener(
                 menuItem -> {
                     // set item as selected to persist highlight
@@ -262,6 +298,11 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
                 });
 
 
+        //Mise à jour du profil si existant
+        BitmapDrawable loadImage = FileUtils.loadImageFromStorage(Constants.directory, Constants.profile, this);
+        if (loadImage != null) {
+            profile.setImageDrawable(loadImage);
+        }
         // on passe la main à l'activité fille
         onCreateActivity();
     }
@@ -367,6 +408,18 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
         }
     }
 
+
+    /**
+     * Appliquer une fonte aux elements de menu
+     *
+     * @param mi
+     */
+    private void applyFontToMenuItem(MenuItem mi) {
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/poppins_light.ttf");
+        SpannableString mNewTitle = new SpannableString(mi.getTitle());
+        mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        mi.setTitle(mNewTitle);
+    }
 
     // classes filles
     protected abstract void onCreateActivity();

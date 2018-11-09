@@ -4,9 +4,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -14,13 +15,13 @@ import com.flys.bible.R;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.custom.CoreState;
 import com.flys.bible.utils.ConfigDialogFragment;
+import com.flys.bible.utils.Constants;
 import com.flys.bible.utils.FileUtils;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
-import org.springframework.core.io.FileSystemResource;
 
 import java.io.IOException;
 
@@ -66,7 +67,7 @@ public class GeneralSettingsFragment extends AbstractFragment {
 
     //Edition du profil
     @Click(R.id.edit_profil)
-    protected void edit(){
+    protected void edit() {
         ConfigDialogFragment configDialogFragment = ConfigDialogFragment.newInstance("AMADOU BAKARI");
         configDialogFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
         configDialogFragment.show(getActivity().getSupportFragmentManager(), "fragment_edit_name");
@@ -90,6 +91,11 @@ public class GeneralSettingsFragment extends AbstractFragment {
     @Override
     protected void initView(CoreState previousState) {
 
+        BitmapDrawable loadImage = FileUtils.loadImageFromStorage(Constants.directory, Constants.profile, activity);
+        if(loadImage!=null){
+            profile.setImageDrawable(loadImage);
+        }
+
     }
 
     @Override
@@ -100,6 +106,8 @@ public class GeneralSettingsFragment extends AbstractFragment {
     @Override
     protected void updateOnRestore(CoreState previousState) {
 
+        BitmapDrawable loadImage = FileUtils.loadImageFromStorage(Constants.directory, Constants.profile, activity);
+        profile.setImageDrawable(loadImage);
     }
 
     @Override
@@ -150,9 +158,9 @@ public class GeneralSettingsFragment extends AbstractFragment {
                     FileUtils.dumpImageMetaData(activity, uri);
                     try {
                         profile.setImageDrawable(new BitmapDrawable(getResources(), FileUtils.getBitmapFromUri(uri, activity)));
-
-                        FileUtils.saveToInternalStorage(FileUtils.getBitmapFromUri(uri, activity), "", "", activity);
-
+                        Log.e(getClass().getSimpleName(), "-------------------------------  uri :" + uri);
+                        Bitmap bitmap=FileUtils.getBytes(activity,uri);
+                        FileUtils.saveToInternalStorage(bitmap, Constants.directory, Constants.profile, activity);
 
                     } catch (IOException e) {
                         Log.e(getClass().getSimpleName(), e.getMessage());

@@ -1,0 +1,4 @@
+{
+  "entities":["com.flys.bible.entities.Chapitre","com.flys.bible.entities.AppConfig"]
+
+}

@@ -1,7 +1,8 @@
 package com.flys.bible.fragments.behavior;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.SearchView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.SearchView;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,10 +16,18 @@ import com.flys.bible.R;
 import com.flys.bible.Utils;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.custom.CoreState;
+import com.flys.bible.config.InitApp;
+import com.flys.bible.entities.AppConfig;
+import com.flys.bible.dao.db.ifaces.AppConfigDao;
+import com.flys.bible.dao.db.ifaces.ChapitreDao;
+import com.flys.bible.dao.db.impl.AppConfigDaoImpl;
+import com.flys.bible.dao.db.impl.ChapitreDaoImpl;
 import com.flys.bible.entities.Chapitre;
 import com.flys.bible.fragments.adapter.ChapitreAdapter;
 import com.flys.bible.utils.DepthPageTransformer;
+import com.flys.generictools.dao.daoException.DaoException;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsItem;
@@ -36,7 +45,7 @@ import java.util.List;
 
 @EFragment(R.layout.fragment_main_layout)
 @OptionsMenu(R.menu.menu_main)
-public class MainFragment extends AbstractFragment{
+public class MainFragment extends AbstractFragment {
 
     @ViewById(R.id.viewPager)
     protected ViewPager viewPager;
@@ -57,6 +66,13 @@ public class MainFragment extends AbstractFragment{
 
     private ChapitreAdapter chapitreAdapter;
 
+    @Bean(ChapitreDaoImpl.class)
+    protected ChapitreDao chapitreDao;
+
+    @Bean(InitApp.class)
+    protected InitApp initApp;
+
+
     SearchView searchView;
 
     private static int currentItem;
@@ -64,12 +80,12 @@ public class MainFragment extends AbstractFragment{
 
     @Click(R.id.next)
     protected void nextChapitre() {
-        viewPager.setCurrentItem(viewPager.getCurrentItem()+1,true);
+        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
     }
 
     @Click(R.id.previous)
     protected void previousChapitre() {
-        viewPager.setCurrentItem(viewPager.getCurrentItem()-1,true);
+        viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
     }
 
     @Override
@@ -99,10 +115,26 @@ public class MainFragment extends AbstractFragment{
 
     @Override
     protected void initView(CoreState previousState) {
+
+        //If it's the first time to come to the application
+        if(!initApp.init()){
+            Log.e(getClass().getSimpleName(), "Not installed updateOnRestore !");
+            //Installation
+            initApp.install();
+
+        }
         chapitreAdapter = new ChapitreAdapter(activity, listModels);
         viewPager.setAdapter(chapitreAdapter);
         viewPager.setPageTransformer(true, new DepthPageTransformer());
-        Log.e(getClass().getSimpleName(), "CurrentItem : "+viewPager.getCurrentItem());
+
+
+        try {
+            Chapitre chapitre = chapitreDao.save(new Chapitre("Chapite 1", 1, null));
+            Log.e(getClass().getSimpleName(), "chapitre : " + chapitre.getId());
+
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -113,6 +145,8 @@ public class MainFragment extends AbstractFragment{
 
     @Override
     protected void updateOnRestore(CoreState previousState) {
+
+
     }
 
     @Override
@@ -174,7 +208,6 @@ public class MainFragment extends AbstractFragment{
     }
 
     /**
-     *
      * @param list
      * @param query
      * @return
@@ -191,7 +224,6 @@ public class MainFragment extends AbstractFragment{
         }
         return tasks;
     }
-
 
 
 }

@@ -1,12 +1,13 @@
 package com.flys.bible.utils;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.flys.bible.R;
@@ -18,10 +19,14 @@ import com.flys.bible.R;
 public class ConfigDialogFragment extends DialogFragment {
 
     private TextView mEditText;
+    private ImageView save;
+
     public static ConfigDialogFragment newInstance(String title) {
         ConfigDialogFragment frag = new ConfigDialogFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
+
+        //Put sérialization
         frag.setArguments(args);
         return frag;
     }
@@ -52,7 +57,8 @@ public class ConfigDialogFragment extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Get field from view
-        mEditText = (TextView) view.findViewById(R.id.title);
+        mEditText =  view.findViewById(R.id.title);
+        save =  view.findViewById(R.id.save);
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "AMADOU BAKARI");
         mEditText.setText(title);
@@ -61,6 +67,8 @@ public class ConfigDialogFragment extends DialogFragment {
         mEditText.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        save.setOnClickListener(view1 -> dismiss());
+
     }
 
 }

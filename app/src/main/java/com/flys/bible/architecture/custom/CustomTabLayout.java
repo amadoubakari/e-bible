@@ -2,7 +2,7 @@ package com.flys.bible.architecture.custom;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.design.widget.TabLayout;
+import com.google.android.material.tabs.TabLayout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +27,7 @@ public class CustomTabLayout extends TabLayout {
   }
 
   private void init() {
-    mTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Roboto-Bold.ttf");
+    mTypeface = Typeface.createFromAsset(getContext().getAssets(), "font/poppins_light.ttf");
   }
 
   @Override

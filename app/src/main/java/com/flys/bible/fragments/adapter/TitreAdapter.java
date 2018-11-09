@@ -1,10 +1,9 @@
 package com.flys.bible.fragments.adapter;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,8 @@ import android.widget.TextView;
 
 import com.flys.bible.R;
 import com.flys.bible.entities.Titre;
-import com.flys.bible.entities.Verset;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
