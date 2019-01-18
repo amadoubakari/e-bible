@@ -8,30 +8,34 @@ import com.flys.generictools.tools.Utils;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Persistence implements Serializable {
+public class PersistenceFile implements Serializable {
 
-    private static final Persistence ourInstance = new Persistence();
+    private static final PersistenceFile ourInstance = new PersistenceFile();
     private static Context context;
 
-    public static Persistence getInstance(Context context1) {
+    public static PersistenceFile getInstance(Context context1) {
 
-        context=context1;
+        context = context1;
         return ourInstance;
     }
 
-    private Persistence() {
+    private PersistenceFile() {
     }
 
     private List<Class<?>> entityClasses;
 
+    /**
+     * get entity classes from persistence file
+     *
+     * @return
+     */
     public List<Class<?>> getEntityClasses() {
-       Entities entities=new Entities();
+        Entities entities = new Entities();
         ObjectMapper mapper = new ObjectMapper();
         String jsonInput = Utils.loadJSONFromAsset(context, "persistence.json");
-        Log.e(getClass().getSimpleName(),"result:"+jsonInput);
+        Log.e(getClass().getSimpleName(), "result:" + jsonInput);
         try {
             entities = mapper.readValue(jsonInput, Entities.class);
 

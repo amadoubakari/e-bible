@@ -1,6 +1,20 @@
 #
-# generated on 2018/10/24 02:39:25
+# generated on 2019/01/18 04:07:32
 #
+# --table-start--
+dataClass=com.flys.bible.entities.Testament
+tableName=testament
+# --table-fields-start--
+# --field-start--
+fieldName=name
+# --field-end--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
 # --table-start--
 dataClass=com.flys.bible.entities.Chapitre
 tableName=chapitre
@@ -11,6 +25,76 @@ fieldName=nom
 # --field-start--
 fieldName=numero
 # --field-end--
+# --field-start--
+fieldName=titres
+columnName=titres
+foreignCollection=true
+foreignCollectionEager=true
+foreignCollectionColumnName=titres
+# --field-end--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.flys.bible.entities.Titre
+tableName=titre
+# --table-fields-start--
+# --field-start--
+fieldName=nom
+# --field-end--
+# --field-start--
+fieldName=chapitre
+columnName=chapitre
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=versets
+columnName=titres
+foreignCollection=true
+foreignCollectionEager=true
+foreignCollectionColumnName=titres
+# --field-end--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.flys.bible.entities.Verset
+tableName=verset
+# --table-fields-start--
+# --field-start--
+fieldName=numero
+# --field-end--
+# --field-start--
+fieldName=description
+# --field-end--
+# --field-start--
+fieldName=titre
+columnName=titre
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.flys.bible.entities.Livre
+tableName=livre
+# --table-fields-start--
 # --field-start--
 fieldName=id
 generatedId=true

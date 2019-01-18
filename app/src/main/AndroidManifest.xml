@@ -12,11 +12,11 @@
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
-        android:windowSoftInputMode="adjustResize"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustResize">
         <activity
             android:name="com.flys.bible.activity.SplashScreenActivity_"
             android:label="@string/app_name"

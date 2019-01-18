@@ -5,14 +5,12 @@ import com.flys.bible.entities.Chapitre;
 import com.flys.bible.utils.EApplicationContext;
 import com.flys.generictools.dao.daoImpl.GenericDaoImpl;
 import com.flys.generictools.dao.db.DatabaseHelper;
-import com.flys.generictools.dao.db.Persistence;
+import com.flys.generictools.dao.db.PersistenceFile;
 import com.j256.ormlite.dao.Dao;
 
 import org.androidannotations.annotations.EBean;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by User on 23/10/2018.
@@ -25,7 +23,7 @@ public class ChapitreDaoImpl extends GenericDaoImpl<Chapitre,Long> implements Ch
 
     @Override
     public Dao<Chapitre, Long> getDao() {
-        databaseHelper = new DatabaseHelper(EApplicationContext.getContext(), R.raw.ormlite_config, Persistence.getInstance(EApplicationContext.getContext()).getEntityClasses());
+        databaseHelper = new DatabaseHelper(EApplicationContext.getContext(), R.raw.ormlite_config, PersistenceFile.getInstance(EApplicationContext.getContext()).getEntityClasses());
         try {
             return (Dao<Chapitre, Long>) databaseHelper.getDao(getEntityClassManaged());
         } catch (SQLException e) {

@@ -1,9 +1,8 @@
 package com.flys.bible.dao.db.impl;
 
 import com.flys.bible.R;
-import com.flys.bible.entities.AppConfig;
-import com.flys.bible.dao.db.ifaces.AppConfigDao;
-import com.flys.bible.entities.Chapitre;
+import com.flys.bible.dao.db.ifaces.VersetDao;
+import com.flys.bible.entities.Verset;
 import com.flys.bible.utils.EApplicationContext;
 import com.flys.generictools.dao.daoImpl.GenericDaoImpl;
 import com.flys.generictools.dao.db.DatabaseHelper;
@@ -15,15 +14,15 @@ import org.androidannotations.annotations.EBean;
 import java.sql.SQLException;
 
 @EBean(scope = EBean.Scope.Singleton)
-public class AppConfigDaoImpl extends GenericDaoImpl<AppConfig,Long> implements AppConfigDao {
+public class VersetDaoImpl extends GenericDaoImpl<Verset, Long> implements VersetDao {
 
-    DatabaseHelper<Chapitre,Long> databaseHelper;
+    DatabaseHelper<Verset, Long> databaseHelper;
 
     @Override
-    public Dao<AppConfig, Long> getDao() {
+    public Dao<Verset, Long> getDao() {
         databaseHelper = new DatabaseHelper(EApplicationContext.getContext(), R.raw.ormlite_config, PersistenceFile.getInstance(EApplicationContext.getContext()).getEntityClasses());
         try {
-            return (Dao<AppConfig, Long>) databaseHelper.getDao(getEntityClassManaged());
+            return (Dao<Verset, Long>) databaseHelper.getDao(getEntityClassManaged());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -37,18 +36,7 @@ public class AppConfigDaoImpl extends GenericDaoImpl<AppConfig,Long> implements 
     }
 
     @Override
-    public Class<AppConfig> getEntityClassManaged() {
-        return AppConfig.class;
-    }
-
-    @Override
-    public AppConfig getAppConfig() {
-        AppConfig appConfig=null;
-        try {
-            appConfig= getDao().queryForId(new Long(1));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return appConfig;
+    public Class<Verset> getEntityClassManaged() {
+        return Verset.class;
     }
 }

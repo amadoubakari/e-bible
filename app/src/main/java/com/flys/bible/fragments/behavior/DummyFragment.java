@@ -90,17 +90,17 @@ public class DummyFragment extends AbstractFragment {
         // cela se produit à cahque fois que [initFragment] est exécutée et à chaque fois que le fragment sort de l'adjacence du frgament affiché
         // il faut initialiser les composants de la vue qui a été reconstruite
         // previousState est la dernière sauvegarde du fragment - vaut null si c'est la 1ère visite du fragment
-        ObjectMapper mapper = new ObjectMapper();
+       /* ObjectMapper mapper = new ObjectMapper();
         String jsonInput = Utils.loadJSONFromAsset(activity, "chapitre.json");
         try {
             List<Titre> data = mapper.readValue(jsonInput, new TypeReference<List<Titre>>(){});
             for (Titre data1:data){
                 Log.e(getClass().getSimpleName(), ""+data1.getNom());
-                Log.e(getClass().getSimpleName(), data1.getVersets().get(0).getDescription());
+                Log.e(getClass().getSimpleName(), data1.getVersets().iterator().next().getDescription());
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

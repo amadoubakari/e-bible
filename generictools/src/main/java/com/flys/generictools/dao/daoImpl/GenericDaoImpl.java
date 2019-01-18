@@ -71,7 +71,7 @@ public abstract class GenericDaoImpl<T, K> implements GenericDao<T, K> {
         List<T> result = null;
         try {
             result = getDao().queryForAll();
-            flush();
+            //flush();
         } catch (SQLException e) {
             e.printStackTrace();
         }

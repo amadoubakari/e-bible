@@ -17,15 +17,20 @@ import com.flys.bible.Utils;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.custom.CoreState;
 import com.flys.bible.config.InitApp;
+import com.flys.bible.dao.db.ifaces.TitreDao;
+import com.flys.bible.dao.db.impl.TitreDaoImpl;
 import com.flys.bible.entities.AppConfig;
 import com.flys.bible.dao.db.ifaces.AppConfigDao;
 import com.flys.bible.dao.db.ifaces.ChapitreDao;
 import com.flys.bible.dao.db.impl.AppConfigDaoImpl;
 import com.flys.bible.dao.db.impl.ChapitreDaoImpl;
 import com.flys.bible.entities.Chapitre;
+import com.flys.bible.entities.Livre;
+import com.flys.bible.entities.Titre;
 import com.flys.bible.fragments.adapter.ChapitreAdapter;
 import com.flys.bible.utils.DepthPageTransformer;
 import com.flys.generictools.dao.daoException.DaoException;
+import com.j256.ormlite.dao.ForeignCollection;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -37,6 +42,7 @@ import org.androidannotations.annotations.ViewById;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -62,20 +68,21 @@ public class MainFragment extends AbstractFragment {
     @OptionsMenuItem(R.id.search)
     protected MenuItem menuItem;
 
-    private List<Chapitre> listModels;
+    private Collection<Chapitre> listModels;
 
     private ChapitreAdapter chapitreAdapter;
 
     @Bean(ChapitreDaoImpl.class)
     protected ChapitreDao chapitreDao;
 
+    @Bean(TitreDaoImpl.class)
+    protected TitreDao titreDao;
+
     @Bean(InitApp.class)
     protected InitApp initApp;
 
 
     SearchView searchView;
-
-    private static int currentItem;
 
 
     @Click(R.id.next)
@@ -101,40 +108,51 @@ public class MainFragment extends AbstractFragment {
     @Override
     protected void initFragment(CoreState previousState) {
         listModels = new ArrayList<>();
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonInput = Utils.loadJSONFromAsset(activity, "chapitre.json");
-        try {
-            listModels = mapper.readValue(jsonInput, new TypeReference<List<Chapitre>>() {
-            });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override
     protected void initView(CoreState previousState) {
 
         //If it's the first time to come to the application
-        if(!initApp.init()){
+        if (!initApp.init()) {
             Log.e(getClass().getSimpleName(), "Not installed updateOnRestore !");
             //Installation
             initApp.install();
 
         }
+
+        //Récuperation des chapitres
+        try {
+            listModels = chapitreDao.getAll();
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+
+
+       /* for (Chapitre chapitre : listModels
+                ) {
+            Log.e(getClass().getSimpleName(), "chapitre :  " + chapitre);
+
+            final Collection<Titre> emailList = chapitre.getTitres();
+            for (Titre email : emailList) {
+                Log.e(getClass().getSimpleName(), "email :  " + email);
+            }
+        }
+
+
+        try {
+            List<Titre> titres = titreDao.getAll();
+            for (Titre titre : titres
+                    ) {
+                Log.e(getClass().getSimpleName(), "titre :  " + titre.getChapitre().getId());
+            }
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }*/
         chapitreAdapter = new ChapitreAdapter(activity, listModels);
         viewPager.setAdapter(chapitreAdapter);
         viewPager.setPageTransformer(true, new DepthPageTransformer());
 
-
-        try {
-            Chapitre chapitre = chapitreDao.save(new Chapitre("Chapite 1", 1, null));
-            Log.e(getClass().getSimpleName(), "chapitre : " + chapitre.getId());
-
-        } catch (DaoException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -212,7 +230,7 @@ public class MainFragment extends AbstractFragment {
      * @param query
      * @return
      */
-    private List<Chapitre> filter(List<Chapitre> list, String query) {
+    private List<Chapitre> filter(Collection<Chapitre> list, String query) {
         query = query.toLowerCase();
         final List<Chapitre> tasks = new ArrayList<>();
 

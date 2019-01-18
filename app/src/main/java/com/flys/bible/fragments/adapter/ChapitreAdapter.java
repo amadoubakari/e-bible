@@ -14,6 +14,7 @@ import com.flys.bible.R;
 import com.flys.bible.entities.Chapitre;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -23,10 +24,10 @@ import java.util.List;
 public class ChapitreAdapter extends PagerAdapter {
 
     private Context context;
-    private List<Chapitre> chapitres;
+    private Collection<Chapitre> chapitres;
     private TitreAdapter titreAdapter;
 
-    public ChapitreAdapter(Context context, List<Chapitre> chapitres) {
+    public ChapitreAdapter(Context context, Collection<Chapitre> chapitres) {
         this.context = context;
         this.chapitres = chapitres;
     }
@@ -34,7 +35,7 @@ public class ChapitreAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
-        Chapitre chapitre = chapitres.get(position);
+        Chapitre chapitre = chapitres.iterator().next();
         View myImageLayout = LayoutInflater.from(context).inflate(R.layout.chapitre_slider_item, view, false);
         TextView chapitreName=myImageLayout.findViewById(R.id.chapitre);
         chapitreName.setText(chapitre.getNom());

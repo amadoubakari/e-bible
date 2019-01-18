@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +14,20 @@ import com.flys.bible.R;
 import com.flys.bible.entities.Titre;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
  * Created by AMADOU BAKARI on 12/09/2018.
  */
 
-public class TitreAdapter extends RecyclerView.Adapter<TitreAdapter.Holderview>{
-    private List<Titre> listModels;
+public class TitreAdapter extends RecyclerView.Adapter<TitreAdapter.Holderview> {
+    private Collection<Titre> listModels;
     private Context context;
     private int resourceId;
     private VersetsAdapter versetsAdapter;
 
-    public TitreAdapter(List<Titre> listModels, Context context) {
+    public TitreAdapter(Collection<Titre> listModels, Context context) {
         this.listModels = listModels;
         this.context = context;
         this.resourceId = resourceId;
@@ -41,25 +43,28 @@ public class TitreAdapter extends RecyclerView.Adapter<TitreAdapter.Holderview>{
 
     @Override
     public void onBindViewHolder(Holderview holder, final int position) {
-        Titre titre=listModels.get(position);
-        RecyclerView recyclerView=holder.recyclerView;
+
+        Titre titre = listModels.iterator().next();
+        RecyclerView recyclerView = holder.recyclerView;
         holder.nom.setText(titre.getNom());
 
 
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        /*DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), linearLayoutManager.getOrientation());
-        dividerItemDecoration.getItemOffsets(new Rect(20, 0, 20, 0), null, recyclerView, null);
-        recyclerView.addItemDecoration(dividerItemDecoration);*/
+
         recyclerView.setLayoutManager(linearLayoutManager);
-        versetsAdapter=new VersetsAdapter(titre.getVersets(),context);
+        versetsAdapter = new VersetsAdapter(titre.getVersets(), context);
         recyclerView.setAdapter(versetsAdapter);
 
     }
 
     @Override
     public int getItemCount() {
-        return listModels.size();
+        int result = 0;
+        if (!listModels.isEmpty()) {
+            result = listModels.size();
+        }
+        return result;
     }
 
 

@@ -17,6 +17,7 @@ import com.flys.bible.entities.Verset;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -24,14 +25,14 @@ import java.util.List;
  */
 
 public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holderview> {
-    private List<Verset> listModels;
+    private Collection<Verset> listModels;
     private Context context;
     private int resourceId;
 
     private Calendar calendar;
 
 
-    public VersetsAdapter(List<Verset> listModels, Context context) {
+    public VersetsAdapter(Collection<Verset> listModels, Context context) {
         this.listModels = listModels;
         this.context = context;
         this.resourceId = resourceId;
@@ -46,7 +47,7 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
 
     @Override
     public void onBindViewHolder(Holderview holder, final int position) {
-        Verset verset = listModels.get(position);
+        Verset verset = listModels.iterator().next();
         holder.number.setText("" + verset.getNumero());
         holder.description.setText(verset.getDescription());
 
