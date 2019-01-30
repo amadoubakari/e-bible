@@ -25,14 +25,14 @@ import java.util.List;
  */
 
 public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holderview> {
-    private Collection<Verset> listModels;
+    private List<Verset> listModels;
     private Context context;
     private int resourceId;
 
     private Calendar calendar;
 
 
-    public VersetsAdapter(Collection<Verset> listModels, Context context) {
+    public VersetsAdapter(List<Verset> listModels, Context context) {
         this.listModels = listModels;
         this.context = context;
         this.resourceId = resourceId;
@@ -47,7 +47,7 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
 
     @Override
     public void onBindViewHolder(Holderview holder, final int position) {
-        Verset verset = listModels.iterator().next();
+        Verset verset = listModels.get(position);
         holder.number.setText("" + verset.getNumero());
         holder.description.setText(verset.getDescription());
 

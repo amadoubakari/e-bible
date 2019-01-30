@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.flys.bible.R;
 import com.flys.bible.entities.Titre;
+import com.flys.bible.entities.Verset;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,12 +23,12 @@ import java.util.List;
  */
 
 public class TitreAdapter extends RecyclerView.Adapter<TitreAdapter.Holderview> {
-    private Collection<Titre> listModels;
+    private List<Titre> listModels;
     private Context context;
     private int resourceId;
     private VersetsAdapter versetsAdapter;
 
-    public TitreAdapter(Collection<Titre> listModels, Context context) {
+    public TitreAdapter(List<Titre> listModels, Context context) {
         this.listModels = listModels;
         this.context = context;
         this.resourceId = resourceId;
@@ -53,7 +54,7 @@ public class TitreAdapter extends RecyclerView.Adapter<TitreAdapter.Holderview> 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
 
         recyclerView.setLayoutManager(linearLayoutManager);
-        versetsAdapter = new VersetsAdapter(titre.getVersets(), context);
+        versetsAdapter = new VersetsAdapter(new ArrayList(titre.getVersets()) , context);
         recyclerView.setAdapter(versetsAdapter);
 
     }

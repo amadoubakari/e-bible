@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.flys.bible.R;
 import com.flys.bible.entities.Chapitre;
+import com.flys.bible.entities.Titre;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,10 +25,10 @@ import java.util.List;
 public class ChapitreAdapter extends PagerAdapter {
 
     private Context context;
-    private Collection<Chapitre> chapitres;
+    private List<Chapitre> chapitres;
     private TitreAdapter titreAdapter;
 
-    public ChapitreAdapter(Context context, Collection<Chapitre> chapitres) {
+    public ChapitreAdapter(Context context, List<Chapitre> chapitres) {
         this.context = context;
         this.chapitres = chapitres;
     }
@@ -35,7 +36,7 @@ public class ChapitreAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup view, int position) {
-        Chapitre chapitre = chapitres.iterator().next();
+        Chapitre chapitre = chapitres.get(position);
         View myImageLayout = LayoutInflater.from(context).inflate(R.layout.chapitre_slider_item, view, false);
         TextView chapitreName=myImageLayout.findViewById(R.id.chapitre);
         chapitreName.setText(chapitre.getNom());
@@ -43,7 +44,7 @@ public class ChapitreAdapter extends PagerAdapter {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
-        titreAdapter = new TitreAdapter(chapitre.getTitres(), context);
+        titreAdapter = new TitreAdapter(new ArrayList(chapitre.getTitres()) , context);
         recyclerView.setAdapter(titreAdapter);
         view.addView(myImageLayout, 0);
         return myImageLayout;

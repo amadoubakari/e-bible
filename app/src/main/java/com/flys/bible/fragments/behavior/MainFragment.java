@@ -68,7 +68,7 @@ public class MainFragment extends AbstractFragment {
     @OptionsMenuItem(R.id.search)
     protected MenuItem menuItem;
 
-    private Collection<Chapitre> listModels;
+    private List<Chapitre> listModels;
 
     private ChapitreAdapter chapitreAdapter;
 

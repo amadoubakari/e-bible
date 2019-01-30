@@ -1,5 +1,5 @@
 #
-# generated on 2019/01/18 04:07:32
+# generated on 2019/01/21 12:00:43
 #
 # --table-start--
 dataClass=com.flys.bible.entities.Testament
