@@ -113,7 +113,7 @@ public class MainFragment extends AbstractFragment {
     @Override
     protected void initView(CoreState previousState) {
 
-        //If it's the first time to come to the application
+        //If it's the first time to come to the application install it
         if (!initApp.init()) {
             Log.e(getClass().getSimpleName(), "Not installed updateOnRestore !");
             //Installation
@@ -122,33 +122,18 @@ public class MainFragment extends AbstractFragment {
         }
 
         //Récuperation des chapitres
-        try {
-            listModels = chapitreDao.getAll();
-        } catch (DaoException e) {
-            e.printStackTrace();
-        }
 
+        if(session.getChapitres()!=null&&session.getChapitres().isEmpty()){
 
-       /* for (Chapitre chapitre : listModels
-                ) {
-            Log.e(getClass().getSimpleName(), "chapitre :  " + chapitre);
-
-            final Collection<Titre> emailList = chapitre.getTitres();
-            for (Titre email : emailList) {
-                Log.e(getClass().getSimpleName(), "email :  " + email);
+        }else{
+            try {
+                listModels = chapitreDao.getAll();
+            } catch (DaoException e) {
+                e.printStackTrace();
             }
         }
 
 
-        try {
-            List<Titre> titres = titreDao.getAll();
-            for (Titre titre : titres
-                    ) {
-                Log.e(getClass().getSimpleName(), "titre :  " + titre.getChapitre().getId());
-            }
-        } catch (DaoException e) {
-            e.printStackTrace();
-        }*/
         chapitreAdapter = new ChapitreAdapter(activity, listModels);
         viewPager.setAdapter(chapitreAdapter);
         viewPager.setPageTransformer(true, new DepthPageTransformer());

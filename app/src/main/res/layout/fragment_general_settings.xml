@@ -56,4 +56,31 @@
             android:alpha="0.5"
             app:srcCompat="@drawable/ic_baseline_create_24px" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="245dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center_horizontal"
+            android:text="this does not set the TextView centered, it only forces it to have two lines. Still, this answer is not so bad it needs to be downvoted. this does not set the TextView centered, it only forces it to have two lines. Still, this answer is not so bad it needs to be downvoted. "
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="345dp"
+        android:minHeight="200dp">
+
+        <!-- Card contents. -->
+
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

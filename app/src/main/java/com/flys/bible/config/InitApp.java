@@ -65,7 +65,7 @@ public class InitApp implements Serializable {
     }
 
     /**
-     * @return
+     * @return Elle permet d'installer notre application.
      */
     public boolean install() {
         AppConfig config = null;
@@ -78,15 +78,15 @@ public class InitApp implements Serializable {
             });
             List<Chapitre> listModels = livre.getChapitres();
 
-            for (Chapitre chapitre: listModels
-                 ) {
-                Chapitre chapitre1=chapitreDao.save(chapitre);
-                for (Titre titre:chapitre1.getTitres()
-                     ) {
+            for (Chapitre chapitre : listModels
+                    ) {
+                Chapitre chapitre1 = chapitreDao.save(chapitre);
+                for (Titre titre : chapitre1.getTitres()
+                        ) {
                     titre.setChapitre(chapitre1);
-                    Titre titre1=titreDao.save(titre);
-                    for (Verset verset: titre1.getVersets()
-                         ) {
+                    Titre titre1 = titreDao.save(titre);
+                    for (Verset verset : titre1.getVersets()
+                            ) {
                         verset.setTitre(titre1);
                         versetDao.save(verset);
                     }
@@ -95,11 +95,13 @@ public class InitApp implements Serializable {
             config = appConfigDao.save(new AppConfig(true));
         } catch (DaoException e) {
             Log.e(getClass().getSimpleName(), "dao exception" + e.getMessage());
-        }catch (JsonMappingException e) {
+        } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return config.isInstalled();
     }
+
+
 }

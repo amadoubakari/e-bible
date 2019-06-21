@@ -23,7 +23,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     @ViewById(R.id.bible_logo)
     protected ImageView logo;
-    static final int SPLASHSCREEN_TIMEOUT = 1000;
+    static final int SPLASHSCREEN_TIMEOUT = 5000;
 
     @AfterViews
     protected void afterViews() {
