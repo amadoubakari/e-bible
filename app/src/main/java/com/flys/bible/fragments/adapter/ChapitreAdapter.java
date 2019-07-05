@@ -5,6 +5,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,19 @@ public class ChapitreAdapter extends PagerAdapter {
 
     private Context context;
     private List<Chapitre> chapitres;
-    private TitreAdapter titreAdapter;
 
     public ChapitreAdapter(Context context, List<Chapitre> chapitres) {
         this.context = context;
         this.chapitres = chapitres;
+
+
+       chapitres.forEach(chapitre1 -> {
+            chapitre1.getTitres().forEach(titre -> {
+                titre.getVersets().forEach(verset -> {
+                    Log.e(getClass().getCanonicalName(), "--------------- versets ChapitreAdapter   ------------"+verset.toString());
+                });
+            });
+        });
     }
 
 
@@ -44,7 +53,7 @@ public class ChapitreAdapter extends PagerAdapter {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
-        titreAdapter = new TitreAdapter(new ArrayList(chapitre.getTitres()) , context);
+        TitreAdapter titreAdapter = new TitreAdapter(new ArrayList(chapitre.getTitres()) , context);
         recyclerView.setAdapter(titreAdapter);
         view.addView(myImageLayout, 0);
         return myImageLayout;

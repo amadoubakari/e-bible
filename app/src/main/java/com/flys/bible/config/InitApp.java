@@ -2,8 +2,6 @@ package com.flys.bible.config;
 
 import android.util.Log;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,10 +15,7 @@ import com.flys.bible.dao.db.impl.ChapitreDaoImpl;
 import com.flys.bible.dao.db.impl.TitreDaoImpl;
 import com.flys.bible.dao.db.impl.VersetDaoImpl;
 import com.flys.bible.entities.AppConfig;
-import com.flys.bible.entities.Chapitre;
 import com.flys.bible.entities.Livre;
-import com.flys.bible.entities.Titre;
-import com.flys.bible.entities.Verset;
 import com.flys.bible.utils.EApplicationContext;
 import com.flys.generictools.dao.daoException.DaoException;
 
@@ -76,22 +71,31 @@ public class InitApp implements Serializable {
 
             Livre livre = mapper.readValue(jsonInput, new TypeReference<Livre>() {
             });
-            List<Chapitre> listModels = livre.getChapitres();
 
-            for (Chapitre chapitre : listModels
-                    ) {
-                Chapitre chapitre1 = chapitreDao.save(chapitre);
-                for (Titre titre : chapitre1.getTitres()
-                        ) {
-                    titre.setChapitre(chapitre1);
-                    Titre titre1 = titreDao.save(titre);
-                    for (Verset verset : titre1.getVersets()
-                            ) {
-                        verset.setTitre(titre1);
-                        versetDao.save(verset);
-                    }
+            livre.getChapitres().forEach(chapitre -> {
+                try {
+                    chapitreDao.save(chapitre).getTitres().forEach(titre -> {
+                        titre.setChapitre(chapitre);
+                        try {
+                            titreDao.save(titre).getVersets().forEach(verset -> {
+                                verset.setTitre(titre);
+                                try {
+                                    versetDao.save(verset);
+                                } catch (DaoException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                        } catch (DaoException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                } catch (DaoException e) {
+                    e.printStackTrace();
                 }
-            }
+            });
+
+
+
             config = appConfigDao.save(new AppConfig(true));
         } catch (DaoException e) {
             Log.e(getClass().getSimpleName(), "dao exception" + e.getMessage());

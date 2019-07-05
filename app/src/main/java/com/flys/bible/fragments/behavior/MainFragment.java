@@ -123,9 +123,9 @@ public class MainFragment extends AbstractFragment {
 
         //Récuperation des chapitres
 
-        if(session.getChapitres()!=null&&session.getChapitres().isEmpty()){
+        if (session.getChapitres() != null && session.getChapitres().isEmpty()) {
 
-        }else{
+        } else {
             try {
                 listModels = chapitreDao.getAll();
             } catch (DaoException e) {
@@ -133,7 +133,13 @@ public class MainFragment extends AbstractFragment {
             }
         }
 
-
+       /* listModels.forEach(chapitre1 -> {
+            chapitre1.getTitres().forEach(titre -> {
+                titre.getVersets().forEach(verset -> {
+                    Log.e(getClass().getCanonicalName(), "--------------- versets   ------------"+verset.toString());
+                });
+            });
+        });*/
         chapitreAdapter = new ChapitreAdapter(activity, listModels);
         viewPager.setAdapter(chapitreAdapter);
         viewPager.setPageTransformer(true, new DepthPageTransformer());

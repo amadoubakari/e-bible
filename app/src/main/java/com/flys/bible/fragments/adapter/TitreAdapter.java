@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class TitreAdapter extends RecyclerView.Adapter<TitreAdapter.Holderview> 
     @Override
     public void onBindViewHolder(Holderview holder, final int position) {
 
-        Titre titre = listModels.iterator().next();
+        Titre titre = listModels.get(position);
         RecyclerView recyclerView = holder.recyclerView;
         holder.nom.setText(titre.getNom());
 
@@ -54,7 +55,7 @@ public class TitreAdapter extends RecyclerView.Adapter<TitreAdapter.Holderview> 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
 
         recyclerView.setLayoutManager(linearLayoutManager);
-        versetsAdapter = new VersetsAdapter(new ArrayList(titre.getVersets()) , context);
+        versetsAdapter = new VersetsAdapter(new ArrayList(titre.getVersets()), context);
         recyclerView.setAdapter(versetsAdapter);
 
     }
