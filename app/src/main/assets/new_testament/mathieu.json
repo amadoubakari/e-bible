@@ -529,145 +529,347 @@
           ]
         },
         {
-          "nom": "Zozef ati Mariya mimam ti Ezipte nga Nazaret",
+          "nom": "Yesu mudubuna gwat da mizli ar ɓimujuwa",
           "versets": [
             {
+              "numero": 17,
+              "description": "«Ɓimujuwa malla ɓi ngi mijiviɗey na, anja ki wulkam kaɓa yi so kiɗa taŋ avra ta. Yi so ɓa ngi kiɗa taŋ avra ta, amma ɓa yi ga taŋ wãˀ jaka."
+            },
+            {
+              "numero": 18,
+              "description": "Gisiŋ, yi ɓukum na: ɓa hã muŋ ati hirwuy a sa kiɗam mi na, ko gwat meciɗek mineˀ ar Ɓimujuwa masa kiɗ avra anta, sey da gwatay a gam le cek far."
+            },
+            {
               "numero": 19,
-              "description": "A dirba Herod mumuc so na, modro ngi Bumbulvuŋ a biga vu da Zozef ar musuwun a Ezipte,"
+              "description": "Ɓi meciɗek ngir ɓimujuwa, da mbur a ngila le, yo ara dubuna da mizli mekelemeye, ɓa a gam kanah ya na, mbur nah, a sa zilaka mbur mizlew muwãˀ ar Zumabuy ngi muŋ. Amma ɓimujuwa, da mbur ara ja a hirnga, yo ara dubuna da mizli mekelemeye, ɓa a gam kanah ya na, mbur nah, a sa zilaka mbur madiɗa ar Zumabuy ngi muŋ."
             },
             {
               "numero": 20,
-              "description": "a ɓaŋ: «Slikiɗ, zuɓa mangal ati mumuŋ, mam nga hirwuy Israyel a muŋ, asi mizli mawuɗam kiɗa mangal vagay tuwa, a micam le.»"
-            },
+              "description": "Vurˀe, yi ɓukum na: da kum anta gam gwat Buymisemuŋ mawuɗo, fineˀ ngi buy ngi ɓimujuwahay ati ngi Farisahaya ta na, kum anta sa cam ar Zumabuy ngi muŋ ta wãˀ."
+            }
+          ]
+        },
+        {
+          "nom": "Dubun ar ɓi ngi ji mevel",
+          "versets": [
             {
               "numero": 21,
-              "description": "Zozef a slikiɗ, a zuɓa mangal ati mumuŋ, a mam nga hirwuy Israyel a muŋ."
+              "description": "«Ki cinaka le, a ɓaka dideˀ kumoyo zleˀe na: ‹Ki kiɗ hirnga ta, ko wa gar mikiɗ mbur le vagay na, a sa ram di nga mbuŋ mbur migi kiita.›"
             },
             {
               "numero": 22,
-              "description": "Amma Zozef micina Arkelawus i buy madiɗa ngi si ruwuy Yude ar li ngi cine naŋ Herod na, a zluwun ngi mi nga diga. Ar nah na, Buymisemuŋ a ɓaŋ ɗaˀ le ar musuwun, ɓa a ngizli, ara cifi angi hirwuy Galile. "
+              "description": "Amma ya i ɓukum na: ko wa gar miji mevel le ar sukum naŋ na, a sa ram di nga mbuŋ mbur migi kiita. Ko wa gar miɓa sukum naŋ le: ‹gilaw› na, a sa ram di nga mbuŋ mizli madiɗa migi kiitahay, ko wa gar miɓa sukum naŋ le: ‹mibirnga› na, a ndila le ngi hizigaŋ ng'ar vu."
             },
             {
               "numero": 23,
-              "description": "Vurˀe, a ru, ara cifi angi walahay mazilaka Nazarete. A gi kahana na, ɓa ɓi mijiviɗey miɓaka zleˀe na, a gi muduba: «A sa zilaka mbur Nazaret.»"
+              "description": "Vurˀe, da ki ru ti gwat ɗik ngi gi sedege le ar li gi mikuli da Buymisemuŋ, yo da kisa wuluk le ŋkeŋ, ɓi ada ngi ɗiy ar wala kum ati sukum ɗike na,"
+            },
+            {
+              "numero": 24,
+              "description": "pula gwat ɗik ngi gi sedege na a mbuŋ li gi mikuli a mbuŋ Buymisemuŋ, ara ɗiyam ɓi ati sukum ɗik na ɗagay, a dirba nah, so ga sedege ɗik da Buymisemuŋ so."
+            },
+            {
+              "numero": 25,
+              "description": "«Da mbur a widi ti ka le, yo ki ra ram cuw cuw kum a jiviɗ aruŋ na, wus vu kutum ɓa ki ɗiyaka ɓi nah. Vur naŋ masa vuluw asi haŋ ngi mbur migi kiita, migi kiita kwana, a sa vuluw asi haŋ ngi sojehey, naɓa sojehey a sa kukuw ar dangay."
+            },
+            {
+              "numero": 26,
+              "description": "Gisiŋ, yi ɓuw na: k'anta sa bo tir dangaya ta wãˀ, sey da ki wurka le, ko sisi tekeɗe a ndir ta."
+            }
+          ]
+        },
+        {
+          "nom": "Dubun ar ɓi ngi madama",
+          "versets": [
+            {
+              "numero": 27,
+              "description": "«Ki cinaka le, a ɓam zleˀe na: ‹Ki gi madama ta.›"
+            },
+            {
+              "numero": 28,
+              "description": "Amma ya i ɓukum na: ko wa mupur ngwas le, a hĩyã le, ɓa a hin di na, kite a gi di madama le a mevele si."
+            },
+            {
+              "numero": 29,
+              "description": "«Da hiri ɗik vay hazumo, ara hizigiɗuw ɓa ki gi mungra na, huzlugo avra, hiziga kileŋ avu ka. Zuwen hiri ɗik purla mazizi, a funa taŋ masa hizigaka vu ɗik gar ng'ar vu na le."
+            },
+            {
+              "numero": 30,
+              "description": "Yo da i haŋ ɗik vay hazum mahizigiɗuw ɓa ki gi mungra na, buko avra, hiziga kileŋ avu ka. Zuwen haŋ ɗik purla mazizi, a funa ka masa ci ar vu ti dumvu ɗik wãˀ na le.»"
+            }
+          ]
+        },
+        {
+          "nom": "Dubun ar ɓi ngi ɓula ngwas",
+          "versets": [
+            {
+              "numero": 31,
+              "description": "«A ɓam zleˀe ma na: ‹Da mbur a wuɗ ɓula ngwas naŋ le na, sey a vulaŋ ɗerewol mabiga a ɓula le.›"
+            },
+            {
+              "numero": 32,
+              "description": "Amma ya i ɓukum na: da mbur a ɓula ngwas naŋ le, yo da ngwas nah a sliˀi mbur mekelem le na, naɓa a ɓula nga gi madama, sey da a zuɓam vu zleˀe ka ɓimujuwa mawuɗ ta far  Mbur muzuɓa ngwas nah le kwana, naɓa ara gi madama ya."
+            }
+          ]
+        },
+        {
+          "nom": "Dubun ar ɓi ngi hudum",
+          "versets": [
+            {
+              "numero": 33,
+              "description": "«Ki cinaka le ma, a ɓaka mizli misi zleˀeheye na: ‹Ki ngila hudum ɗike ta, amma ka muhudum le a mbuŋ Bumbulvuŋ na, ga cummo.›"
+            },
+            {
+              "numero": 34,
+              "description": "Amma ya i ɓukum na: anja ki hudumom ta wãˀ si, ko ti birngiŋ ngi muŋ, asi i li cifi ngi Buymisemuŋ,"
+            },
+            {
+              "numero": 35,
+              "description": "ko ti hirwuy, asi i li ɗuva sar naŋ, ko ti Zeruzalem, asi i walahay madiɗa ngi buy madiɗa."
+            },
+            {
+              "numero": 36,
+              "description": "Ki hudum ko ti hirnga ɗik vuna ta ma, asi ko ngwic ngi hirnga ɗik pal, ki tiri di babara malla titra gu ta."
+            },
+            {
+              "numero": 37,
+              "description": "Kum ɓam jak na: ‹haˀaw› malla ‹ˀŋ ŋ› tewle si, asi mingiɓi mekelem ameˀe gar na, a bo ti vu Satan."
+            }
+          ]
+        },
+        {
+          "nom": "Dubun ar ɓi ngi pula cuwal",
+          "versets": [
+            {
+              "numero": 38,
+              "description": "«Ki cinaka le, a ɓam zleˀe na: ‹Hiri a wurkaka ti hiri, sliŋ a wurkaka ti sliŋ.›"
+            },
+            {
+              "numero": 39,
+              "description": "Amma ya i ɓukum na: mbur mugukum malambaˀ le na, ki pulaka cuwal naŋ ta. Da mbur a cuw babarva le avu kwala vay hazum na, mbiɗaŋ vay mekeleme ma jaka."
+            },
+            {
+              "numero": 40,
+              "description": "Da mbur a wuɗ widi ti ka le, ɓa a tiɓa zana ngi si dawra ɗike na, pula a tiɓa dawra vuna wãˀ si."
+            },
+            {
+              "numero": 41,
+              "description": "Da mbur ara tikuw ˀay ɓa ki ru kilometir pal na, aru kilometir cuw wãˀ si."
+            },
+            {
+              "numero": 42,
+              "description": "Da mbur a cufuɗ gwat le avu ka na, vulaŋ. Da mbur ara wuɗ didiɗa gwat avu ka na, ki zlikaŋ ta."
+            }
+          ]
+        },
+        {
+          "nom": "Ɓi ngi wuɗa mesene kumoy",
+          "versets": [
+            {
+              "numero": 43,
+              "description": "«Ki cinaka le, a ɓam zleˀe na: ‹Wuɗ mbur cil ɗike, yo hirsa mesene ɗike.›"
+            },
+            {
+              "numero": 44,
+              "description": "Amma ya i ɓukum na: wuɗam mesene kumoy, mizli masupukum nder nder na, diram dibiɗ vur taŋ,"
+            },
+            {
+              "numero": 45,
+              "description": "ɓa kisa tiram ziri ngi Cine kum misi a muŋ. Asi Cine kumo, ara bo ti pas ar mizli misi moˀorehey ati mizli mezleheye, ara ga vuŋ da mizli gar magam gwat naŋ mawuɗo ati magam gwat naŋ mawuɗ ta."
+            },
+            {
+              "numero": 46,
+              "description": "Da ki wuɗama, sey mizli mawuɗokum si na, kisa lumam di i wuruk wana maka? Ko micikila buutuhoy kwana, ara gam kanah ya ta kwa?"
+            },
+            {
+              "numero": 47,
+              "description": "Da ki jam haŋ sey da sukum kumoy si na, ɓa ki gam di i gwat mupuɗaw kwa? Ko mizli duniyahay kwana, ara gam kanah ya ta kwa?"
+            },
+            {
+              "numero": 48,
+              "description": "Kumo so na, ndiram mezlehey wãˀ kaɓa Cine kum misi a muŋ i mezle wãˀ na ya."
             }
           ]
         }
       ]
     },
     {
-      "nom": "Chapitre 2",
-      "numero": 2,
+      "nom": "Sapitir 6",
+      "numero": 6,
       "titres": [
         {
-          "nom": "Misi sinmijileŋhey musoko puraka Yesu",
+          "nom": "Gwat ngi vul da misi murgahay",
           "versets": [
             {
               "numero": 1,
-              "description": "Ti Herod mazum buy na, a ya ka Yesu a Beteleyem, hirwuy Yude. A dirba nah, misi sinmijileŋhey a soko tisi pas ngi miprik nga Zeruzaleme. "
+              "description": "«Gwat kum magaka ar sipi jiviɗ kumo, jam lesl, anja ki gaka a mihiri mizli ɓa a purukum ta. Da kanah na, naɓa Cine kum misi a muŋ anta sa wurkukum ta."
             },
             {
               "numero": 2,
-              "description": "Dar a cufuɗam mizli: «Buy madiɗa ngi Yudehey miyaka wurenna na, naŋ amaka? I puroko bangay naŋ le zle tisi pas ngi miprike, i soko na, ɓa i dilkam a mbuŋ naŋ.»"
+              "description": "Mizli miɓi mi cuw cuwoyo, a vulaka gwat da misi murgahaya ar hay ngi dira dibiɗey, yo a jiviɗ madiɗahay, a tilam di mi ɓa mizli a gaka taŋ dudoko. Gisiŋ, yi ɓukum na: taŋ a lumaka migir taŋ le si. Amma ka, da ki ra vul gwat da misi murgahay na, anja ki gi ka taŋ na ta."
             },
             {
               "numero": 3,
-              "description": "Herod buy madiɗa, micina labara nah na, a muɗaŋ didak le, naŋ ati mizli ngi Zeruzalemey gar."
+              "description": "Da ka, ki ra vul gwat da misi murgahay na, gwat haŋ vay hazum ɗik maga na, anja haŋ gula ɗik a si na ta."
             },
             {
               "numero": 4,
-              "description": "Joˀ a kuso masay madiɗa hay ati buy ngi ɓimujuwa ngi wuzla mizli naŋhaya, a cufuɗa taŋ: «A sa ya ka Mesi na zleˀe amaka?»"
-            },
+              "description": "Anja gwat ɗik ka mavula a ndir i gwat miyaŋŋa, ɓa Cine ɗik mapur ar li miyaŋŋa na, a sa wurkuw minjeˀe."
+            }
+          ]
+        },
+        {
+          "nom": "Dira dibiɗ",
+          "versets": [
             {
               "numero": 5,
-              "description": "Mizli a mbiɗakaŋ di: «A Beteleyem, hirwuy Yude, asi mijiviɗ a toho le zleˀe, a ɓi na:"
+              "description": "«Mizli miɓi mi cuw cuwoyo, taŋ a wuɗam dira dibiɗ taŋ deŋ ti deŋ ar hay ngi dira dibiɗey malla a mazlaka jiviɗey, ɓa mizli a puraka taŋ. Gisiŋ, yi ɓukum na: taŋ a lumaka migir taŋ le si. Amma kumo, da ki ra diram dibiɗ na, anja ki gam ka taŋ na ta."
             },
             {
               "numero": 6,
-              "description": "«Ka Beteleyem, hirwuy Yude, ki prok miwãˀ ngi wuzla walahay madiɗa ngi si ruwuy Yudeheye ta, asi buy masa jigina Israyel, mizli ɗuwoy na, a sa bo tivi ka.»"
+              "description": "Da ka, ki wuɗ le ɓa ki dir dibiɗ na, ci nga viŋ ɗike, gica miviŋ, tumbulo Cine ɗik misi ar li miyaŋŋa nah na, ɓa Cine ɗik mapur ar li miyaŋŋa tuwa a sa wurkuw minjeˀe."
             },
             {
               "numero": 7,
-              "description": "Dar Herod a zilo misi sinmijileŋhey tuwa ti mi yaŋ yaŋ, a cufuɗa taŋ, ɓa a si na hin taŋ mupuraka bangay na."
+              "description": "«Da ki ra diram dibiɗ na, anja ki ɓam kwiliŋ kwiliŋ ka mizli duniyahay ta, taŋ a waka kaɓa Bumbulvuŋ a sa cine dira dibiɗ taŋ vurˀe."
             },
             {
               "numero": 8,
-              "description": "Joˀ a slina taŋ nga Betelyeme, a ɓa taŋ: «A ram, jikam slimiɗ kuy kuy vur mangala. Da ki lumaka le na, kisa ɓikiy di, ɓa i ra huruk huruk a mbuŋ naŋ aya.»"
-            },
+              "description": "Anja kumo, ki sulɓoko mi taŋ ta, asi Cine kum a si na gwat kum misi ti may naŋ le zle ti kum mucufuɗakaŋ t'aruŋ."
+            }
+          ]
+        },
+        {
+          "nom": "Cine ndra misi a muŋ",
+          "versets": [
             {
               "numero": 9,
-              "description": "A dirba buy miɓa taŋ kanah na, misi sinmijileŋhey a cohom, bangay taŋ mupuroko di zle tisi pas ngi miprik tuwa, ara ru a mbuŋ taŋ, hã ara cici ar li mangal misi anga na."
+              "description": "«Da ki ra diram dibiɗ na, ɓam ani: ‹Cine ndra misi a muŋ, Anja mizli a sinukuw ki Buymisemuŋ mipal."
             },
             {
               "numero": 10,
-              "description": "Taŋ mupuraka bangaya na, a mumulom haɗi teˀe."
+              "description": "Anja ki so zum buy a wuzla mizli. Anja gwat ka mawuɗo, a gi a ruwuy kaɓa naŋ magi a muŋ."
             },
             {
               "numero": 11,
-              "description": "A cam ngi haya, a lumaka mangal ati mumuŋ naŋ Mariya. A girdaˀam, a dilkam a mbuŋ naŋ. A wunaka akoti taŋhaya, dar a vulakaŋ urdi hirnga , mukuturɓuy ngi zlum ti zlum waɗ urdi mukuturɓuy."
+              "description": "Vula ndra ɗaf, ndra misi ti may naŋ dana."
             },
             {
               "numero": 12,
-              "description": "A dirba nah, Buymisemuŋ a ɓa taŋ ɗaˀ ɗaˀ ar musuwun, ɓa a mam bal ti vu Herodo mata. Joˀ a cohom nga hirwuy taŋ tir jiviɗ mekelem."
-            }
-          ]
-        },
-        {
-          "nom": "Zozef ati Mariya mikilam ti mangal taŋ nga Ezipte",
-          "versets": [
+              "description": "Pula gwat malambaˀ ndra migaka, kaɓa ndra mupulaka ngi mizli migam ndra di na ya."
+            },
             {
               "numero": 13,
-              "description": "A dirba misi sinmijileŋhey mucohom na, modro ngi Bumbulvuŋ a biga vu da Zozef ar musuwun, a ɓaŋ: «Slikiɗ, zuɓa mangal ati mumuŋ, kil nga hirwuy Ezipte, cifi a diga, sey ya misa ɓuw le mawa, asi Herod a sa sipa mangala, ɓa a zizaŋ.»"
+              "description": "Ki pula ndra i cam ar li ngi tikin ta, amma laha ndra tisi haŋ ngi Satana. [Asi Zumabuy, gidaŋ ati dudok i ngi ɗik hã ngi sete. Amin. .» ] "
             },
             {
               "numero": 14,
-              "description": "Zozef a slikiɗ, a zuɓa mangal ati mumuŋ naŋ, a cohom ngi duvuɗo nga hirwuy Ezipte."
+              "description": "«Naŋ kine, da ki ra pulaka gwat malambaˀ ngi mizli magukum di na, naɓa Cine kum misi a muŋ a sa pulukum di ya."
             },
             {
               "numero": 15,
-              "description": "A cifi a diga hã Herod a mucu. A gi kahana, ɓa ɓi ngi Bumbulvuŋ mijiviɗ miɓa zleˀe na, a gi muduba, asi a ɓi na: «Yi zilo mangal ɗu ti Ezipte.»"
+              "description": "Amma da kum anta ki pulaka gwat malambaˀ ngi mizli magukum di ta na, naɓa Cine kum anta sa pulukum di ta ya."
             }
           ]
         },
         {
-          "nom": "Mingizlaka ziri mizilehey",
+          "nom": "Dubun ar ɓi ngi dalyam",
           "versets": [
             {
               "numero": 16,
-              "description": "Herodo mupura misi sinmijileŋhey tuwa migam di jalaɓi na, a zuɓ himaˀ haɗi, a slin ɓa ara kiɗaka ziri mizile ngi Beteleyemey ati ngir prok naŋhaya cek vagay vagay, zle avu ziri gazahay hã avu ziri misi vi cuw cuwoy, weˀ avu hin misi sinmijileŋhey miɓakaŋ di tuwa."
+              "description": "«Da ki ra gam dalyam na, anja ki gam kaɓa ki ra likam ka mizli miɓi mi cuw cuwoy na ta. Taŋ a mbiɗaka midibiɗe, ɓa mizli a puraka taŋ ara gam dalyam. Gisiŋ, yi ɓukum na: taŋ a lumaka migir taŋ le si."
             },
             {
               "numero": 17,
-              "description": "Ɓi ngi mijiviɗ Zeremi miɓa na, a gi le muduba:"
+              "description": "Amma ka, da ki ra gi dalyam na, njuro hirnga ɗike, buna hiri ɗike,"
             },
             {
               "numero": 18,
-              "description": "«A cinam ara wudam a Rama, ara tuwam, ara irslikam haɗa haɗa. I Rasel matuwuy asi ziri naŋhay. Anta ngum taˀa tuwuyo ta, asi ziri naŋhaya t'anta mata.»"
+              "description": "ɓa mizli a sinaka ki ra gi dalyam ta. Sey Cine ɗik misi akẽh ar li miyaŋŋa na masina tewle, ɓa Cine ɗik mapur ar li miyaŋŋa na, a sa wurkuw minjeˀe."
             }
           ]
         },
         {
-          "nom": "Zozef ati Mariya mimam ti Ezipte nga Nazaret",
+          "nom": "Zlili ngi muŋ",
           "versets": [
             {
               "numero": 19,
-              "description": "A dirba Herod mumuc so na, modro ngi Bumbulvuŋ a biga vu da Zozef ar musuwun a Ezipte,"
+              "description": "«Anja ki cikilam zlili a ruwuy misenna ta, vur a ruwuyo, tiler a zumaŋ, li mileleŋ a nduvaŋ, muhuloy kwana, a slinaka haya, a hulokoŋ."
             },
             {
               "numero": 20,
-              "description": "a ɓaŋ: «Slikiɗ, zuɓa mangal ati mumuŋ, mam nga hirwuy Israyel a muŋ, asi mizli mawuɗam kiɗa mangal vagay tuwa, a micam le.»"
+              "description": "Amma zuwen wam vu ti zlili ar li ngi muŋ. A diga ko tiler anta sa zuma ta, li mileleŋ anta sa nduva ta, muhuloy kwana, anta sa slinaka haya, ɓa a huloko ta ma."
             },
             {
               "numero": 21,
-              "description": "Zozef a slikiɗ, a zuɓa mangal ati mumuŋ, a mam nga hirwuy Israyel a muŋ."
-            },
+              "description": "Asi angi li zlili ɗik misi anga na, mevel ɗike, naŋ anga ya."
+            }
+          ]
+        },
+        {
+          "nom": "Li minjahha ngi dumvu",
+          "versets": [
             {
               "numero": 22,
-              "description": "Amma Zozef micina Arkelawus i buy madiɗa ngi si ruwuy Yude ar li ngi cine naŋ Herod na, a zluwun ngi mi nga diga. Ar nah na, Buymisemuŋ a ɓaŋ ɗaˀ le ar musuwun, ɓa a ngizli, ara cifi angi hirwuy Galile. "
+              "description": "«Hiri i lampe ngi dumvu. Da hiri ɗike naŋ kuy kuy na, naɓa dumvu ɗik gar na, naŋ ar li minjahha."
             },
             {
               "numero": 23,
-              "description": "Vurˀe, a ru, ara cifi angi walahay mazilaka Nazarete. A gi kahana na, ɓa ɓi mijiviɗey miɓaka zleˀe na, a gi muduba: «A sa zilaka mbur Nazaret.»"
+              "description": "Amma da hiri ɗike naŋ kuy kuy ta na, naɓa dumvu ɗik gar kwana, naŋ ar luvuŋ. Da li minjahha misi avu dumvu ɗik i luvuŋ na, kay i luvuŋ mitimbiɗim wãˀ.»"
+            }
+          ]
+        },
+        {
+          "nom": "Buymisemuŋ malla zlili",
+          "versets": [
+            {
+              "numero": 24,
+              "description": "24«Ko mbur purla magi gawla ngi buyoy cuw gu anta. Malla a sa hirsa numuŋ, a sa wuɗ mekeleme, malla ta na, a sa gumbuˀ ng'avi pal numuŋ, a sa zirɗa mi ngi mekeleme. Bumbulvuŋ ati zlili, ki cifam gawla taŋ cuw taŋ gu ta."
+            }
+          ]
+        },
+        {
+          "nom": "Pula vu mbak da Bumbulvuŋ",
+          "versets": [
+            {
+              "numero": 25,
+              "description": "«Vurˀe, yi ɓukum na: ɓi ngi gwat ngi zum, malla gwat ngi si, ko zana kum masa kama, ki likaka ta. Siifa kum a funa gwat ngi zumo le, dumvu kumo kwana, a funa zana ngi ki le ya ta kwa? "
+            },
+            {
+              "numero": 26,
+              "description": "Puraka ɗiyuw ngi ɓuhoy ɗagay: anta zligam gwat ta, anta gam sifi ta, anta pam gwat nga dirgwaɗ ta ma. Amma Cine kum misi a muŋ ara vula taŋ gwat ngi zumo!"
+            },
+            {
+              "numero": 27,
+              "description": "Mbur a wuzla kumo, mamurɗo hin ngi siifa naŋ ko neˀ gu ti lik naŋ na, ada kwa?"
+            },
+            {
+              "numero": 28,
+              "description": "Ki likaka zana ngi ki vur mike? Puraka matayay mafuyukom na, anta gam slra ta, anta siram gugumay ta ma."
+            },
+            {
+              "numero": 29,
+              "description": "Yo yi ɓukum na: ko Salomoŋ ti dudok naŋ kwana, a ki zana mezle ka taŋ na ɗaˀ ta."
+            },
+            {
+              "numero": 30,
+              "description": "Giziŋ misi a ɓuh dana, tiprik a sa hizigakaŋ ar vu, da Buymisemuŋ ara kaŋ zana kahana na, a sa kukum di da kumo fineˀ giziŋ vuna ta jak kwa? Kum misi tiɓi keɗeccehey!"
+            },
+            {
+              "numero": 31,
+              "description": "«Ki ɓam: ‹I sa zumam mike? I sa sam mike? Malla ‹I sa kam mike?› na, anja ki likam kanah ta."
+            },
+            {
+              "numero": 32,
+              "description": "Mizli duniyahaya, ara sipam gwat tayna ndrehhe. Amma Cine kum misi a muŋ, a si na gwat kum misi ti may naŋ na le gar."
+            },
+            {
+              "numero": 33,
+              "description": "Zuwen kam slimiɗ ar Zumabuy ngi muŋ ati gwat mijeŋŋe Buymisemuŋ mawuɗo ɗagay. Gwat tayna gar, Buymisemuŋ a sa pukum di ameˀe ma."
+            },
+            {
+              "numero": 34,
+              "description": "Ki likaka hin misi tiprike ta, hin misi tiprike, a sa lik hirnga naŋ vuna si. Hin gar na, naŋ ti gir nga naŋ, muk ti naŋ si."
             }
           ]
         }

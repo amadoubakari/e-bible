@@ -31,15 +31,6 @@ public class ChapitreAdapter extends PagerAdapter {
     public ChapitreAdapter(Context context, List<Chapitre> chapitres) {
         this.context = context;
         this.chapitres = chapitres;
-
-
-       chapitres.forEach(chapitre1 -> {
-            chapitre1.getTitres().forEach(titre -> {
-                titre.getVersets().forEach(verset -> {
-                    Log.e(getClass().getCanonicalName(), "--------------- versets ChapitreAdapter   ------------"+verset.toString());
-                });
-            });
-        });
     }
 
 
