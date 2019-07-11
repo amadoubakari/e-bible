@@ -27,6 +27,7 @@ import com.flys.bible.dao.db.impl.ChapitreDaoImpl;
 import com.flys.bible.entities.Chapitre;
 import com.flys.bible.entities.Livre;
 import com.flys.bible.entities.Titre;
+import com.flys.bible.entities.Verset;
 import com.flys.bible.fragments.adapter.ChapitreAdapter;
 import com.flys.bible.utils.DepthPageTransformer;
 import com.flys.generictools.dao.daoException.DaoException;
@@ -214,17 +215,31 @@ public class MainFragment extends AbstractFragment {
      * @param query
      * @return
      */
-    private List<Chapitre> filter(Collection<Chapitre> list, String query) {
-        query = query.toLowerCase();
-        final List<Chapitre> tasks = new ArrayList<>();
+    private List<Chapitre> filter(Collection<Chapitre> list, final String query) {
+        Log.e(getClass().getSimpleName(), "*****text: "+query.toLowerCase());
+        /*final List<Chapitre> chapitres = new ArrayList<>();
+        final List<Titre> titres = new ArrayList<>();
+        final List<Verset> versets = new ArrayList<>();
+        list.forEach(chapitre1 -> {
+            chapitre1.getTitres().forEach(titre -> {
+                titre.getVersets().forEach(verset -> {
+                    final String text = verset.getDescription().toLowerCase();
+                    Log.e(getClass().getSimpleName(), "*****text: "+query.toLowerCase());
 
-        for (Chapitre model : list) {
-            final String text = model.getNom().toLowerCase();
-            if (text.startsWith(query) || text.contains(query)) {
-                tasks.add(model);
-            }
-        }
-        return tasks;
+                    if (text.startsWith(query.toLowerCase()) || text.contains(query.toLowerCase())) {
+                        versets.add(verset);
+                        titre.getVersets().clear();
+                        titre.setVersets(versets);
+                        titres.add(titre);
+                        chapitre1.getTitres().clear();
+                        chapitre1.setTitres(titres);
+                        chapitres.add(chapitre1);
+                    }
+                });
+            });
+        });
+*/
+        return new ArrayList<>();
     }
 
 

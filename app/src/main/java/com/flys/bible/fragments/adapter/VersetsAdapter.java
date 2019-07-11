@@ -59,7 +59,7 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
             popupMenu.setOnMenuItemClickListener(menuItem -> {
                 switch (menuItem.getItemId()) {
                     case R.id.option_menu_share:
-                        Utils.shareText(context,"Bible",verset.getDescription(),"Titre");
+                        Utils.shareText(context,"ƁIMUTOHO MIPAL","sap. "+verset.getTitre().getChapitre().getNumero()+"\n"+verset.getDescription(),"ƁIMUTOHO MIPAL");
                         break;
                     case R.id.option_menu_mark:
                         Toast.makeText(context, "Marquer", Toast.LENGTH_LONG).show();
