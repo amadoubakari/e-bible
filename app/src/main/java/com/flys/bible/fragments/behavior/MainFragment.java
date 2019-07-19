@@ -1,5 +1,6 @@
 package com.flys.bible.fragments.behavior;
 
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.SearchView;
 
@@ -44,7 +45,13 @@ import org.androidannotations.annotations.ViewById;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 /**
  * Created by AMADOU BAKARI on 09/09/2018.
@@ -70,6 +77,8 @@ public class MainFragment extends AbstractFragment {
     protected MenuItem menuItem;
 
     private List<Chapitre> listModels;
+
+    private static List<Chapitre> chapitres;
 
     private ChapitreAdapter chapitreAdapter;
 
@@ -128,7 +137,7 @@ public class MainFragment extends AbstractFragment {
 
         } else {
             try {
-                listModels = chapitreDao.getAll();
+                chapitres=listModels = chapitreDao.getAll();
             } catch (DaoException e) {
                 e.printStackTrace();
             }
@@ -169,6 +178,7 @@ public class MainFragment extends AbstractFragment {
         searchView = (SearchView) menuItem.getActionView();
         changeSearchTextColor(searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if (!searchView.isIconified()) {
@@ -180,13 +190,30 @@ public class MainFragment extends AbstractFragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
-                if (listModels != null) {
-                    List<Chapitre> filterListModels = filter(listModels, newText);
-                    chapitreAdapter.setFilter(filterListModels);
-                }
-
+                chapitreAdapter.setFilter(filter(listModels, newText));
+                viewPager.setAdapter(chapitreAdapter);
                 return true;
+            }
+
+
+        });
+
+
+        searchView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View v) {
+
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View v) {
+                try {
+                    chapitreAdapter = new ChapitreAdapter(activity, chapitreDao.getAll());
+                } catch (DaoException e) {
+                    e.printStackTrace();
+                }
+                viewPager.setAdapter(chapitreAdapter);
+                viewPager.setPageTransformer(true, new DepthPageTransformer());
             }
         });
 
@@ -198,9 +225,9 @@ public class MainFragment extends AbstractFragment {
     private void changeSearchTextColor(View view) {
         if (view != null) {
             if (view instanceof TextView) {
-                ((TextView) view).setTextColor(getResources().getColor(R.color.grey_600));
+                ((TextView) view).setTextColor(ContextCompat.getColor(activity, R.color.grey_600));
                 ((TextView) view).setTextSize(14);
-                ((TextView) view).setBackgroundColor(getResources().getColor(R.color.white));
+                view.setBackgroundColor(ContextCompat.getColor(activity, R.color.white));
             } else if (view instanceof ViewGroup) {
                 ViewGroup viewGroup = (ViewGroup) view;
                 for (int i = 0; i < viewGroup.getChildCount(); i++) {
@@ -211,35 +238,41 @@ public class MainFragment extends AbstractFragment {
     }
 
     /**
-     * @param list
+     * @param chapitres
      * @param query
      * @return
      */
-    private List<Chapitre> filter(Collection<Chapitre> list, final String query) {
-        Log.e(getClass().getSimpleName(), "*****text: "+query.toLowerCase());
-        /*final List<Chapitre> chapitres = new ArrayList<>();
-        final List<Titre> titres = new ArrayList<>();
-        final List<Verset> versets = new ArrayList<>();
-        list.forEach(chapitre1 -> {
-            chapitre1.getTitres().forEach(titre -> {
-                titre.getVersets().forEach(verset -> {
-                    final String text = verset.getDescription().toLowerCase();
-                    Log.e(getClass().getSimpleName(), "*****text: "+query.toLowerCase());
+    private List<Chapitre> filter(Collection<Chapitre> chapitres, final String query) {
 
-                    if (text.startsWith(query.toLowerCase()) || text.contains(query.toLowerCase())) {
-                        versets.add(verset);
-                        titre.getVersets().clear();
-                        titre.setVersets(versets);
-                        titres.add(titre);
-                        chapitre1.getTitres().clear();
+        final SortedSet<Chapitre> chapitreList = new TreeSet<>();
+
+        if(!query.isEmpty()){
+            chapitres.forEach(chapitre -> {
+                Chapitre chapitre1 = chapitre;
+                List<Titre> titres = new ArrayList<>();
+                chapitre.getTitres().forEach(titre -> {
+                    Set<Verset> versets = titre.getVersets()
+                            .stream()
+                            .filter(verset -> verset.getDescription().toLowerCase().startsWith(query.toLowerCase()) || verset.getDescription().toLowerCase().contains(query.toLowerCase()))
+                            .collect(Collectors.toSet());
+                    if (!versets.isEmpty()) {
+                        Titre titre1 = titre;
+                        titre1.setVersets(versets);
+                        titres.add(titre1);
                         chapitre1.setTitres(titres);
-                        chapitres.add(chapitre1);
+                        chapitreList.add(chapitre1);
                     }
                 });
             });
-        });
-*/
-        return new ArrayList<>();
+
+            return chapitreList.stream()
+                    .sorted(Comparator.reverseOrder())
+                    .peek(chapitre1 -> Log.e(getClass().getSimpleName(),"----------------------- chapitre peek :"+chapitre1.getNumero()))
+                    .collect(Collectors.toList());
+        }else {
+            return chapitres.stream().collect(Collectors.toList());
+        }
+
     }
 
 
