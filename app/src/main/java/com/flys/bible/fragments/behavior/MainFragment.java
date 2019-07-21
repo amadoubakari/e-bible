@@ -64,6 +64,9 @@ public class MainFragment extends AbstractFragment {
     @ViewById(R.id.viewPager)
     protected ViewPager viewPager;
 
+    @ViewById(R.id.title)
+    protected TextView title;
+
     @ViewById(R.id.next)
     protected ImageView next;
 
@@ -146,6 +149,16 @@ public class MainFragment extends AbstractFragment {
         chapitreAdapter = new ChapitreAdapter(activity, listModels);
         viewPager.setAdapter(chapitreAdapter);
         viewPager.setPageTransformer(true, new DepthPageTransformer());
+        title.setText(listModels.get(viewPager.getCurrentItem()).getNom());
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            public void onPageSelected(int position) {
+                title.setText(listModels.get(position).getNom());
+            }
+        });
+
 
 
     }
