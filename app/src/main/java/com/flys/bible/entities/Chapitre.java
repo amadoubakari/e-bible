@@ -8,6 +8,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  */
 
 @DatabaseTable(tableName = "chapitre")
-public class Chapitre extends BaseEntity {
+public class Chapitre extends BaseEntity implements Comparable<Chapitre>, Comparator<Chapitre> {
 
     @DatabaseField
     private String nom;
@@ -67,5 +68,36 @@ public class Chapitre extends BaseEntity {
                 ", numero=" + numero +
                 ", titres=" + titres +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Chapitre o) {
+        if(this.getId()==o.getId()){
+            return 0;
+        }else {
+            return -1;
+        }
+
+    }
+
+    @Override
+    public int compare(Chapitre o1, Chapitre o2) {
+
+        return o2.numero-o1.numero;
+    }
+
+   /* @Override
+    public Comparator<Chapitre> reversed() {
+        return null;
+    }*/
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

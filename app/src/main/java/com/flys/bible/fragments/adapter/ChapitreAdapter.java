@@ -18,6 +18,7 @@ import com.flys.bible.entities.Titre;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.SortedSet;
 
 /**
  * Created by User on 21/09/2018.
@@ -67,7 +68,7 @@ public class ChapitreAdapter extends PagerAdapter {
     }
 
     public void setFilter(List<Chapitre> listModelsTasks) {
-        chapitres = new ArrayList<>();
+        chapitres.clear();
         chapitres.addAll(listModelsTasks);
         notifyDataSetChanged();
 
@@ -77,5 +78,10 @@ public class ChapitreAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view.equals(object);
+    }
+
+    public void setChapitres(List<Chapitre> chapitres) {
+        this.chapitres = chapitres;
+        notifyDataSetChanged();
     }
 }
