@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
         <item
+            android:id="@+id/menu_bible"
+            android:icon="@drawable/ic_baseline_book_24px"
+            android:title="Bible" />
+        <item
             android:id="@+id/menu_audio_bible"
             android:icon="@drawable/ic_baseline_play_circle_outline_24px"
             android:title="Bible Audio" />

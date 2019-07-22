@@ -1,6 +1,8 @@
 package com.flys.bible.activity;
 
 import android.util.Log;
+import android.widget.Toast;
+
 import com.flys.bible.architecture.core.AbstractActivity;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.core.ISession;
@@ -92,6 +94,11 @@ public class MainActivity extends AbstractActivity {
 
   @Override
   public void home() {
+    Toast.makeText(this,"En cours ...",Toast.LENGTH_LONG).show();
+  }
+
+  @Override
+  public void bible()  {
     navigateToView(0, ISession.Action.SUBMIT);
   }
 }

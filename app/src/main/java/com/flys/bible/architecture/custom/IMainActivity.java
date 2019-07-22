@@ -37,13 +37,15 @@ public interface IMainActivity extends IDao {
   boolean ARE_TABS_NEEDED = false;
 
   // image d'attente
-  boolean IS_WAITING_ICON_NEEDED = false;
+  boolean IS_WAITING_ICON_NEEDED = true;
 
   // nombre de fragments de l'application
-  int FRAGMENTS_COUNT = 5;
+  int FRAGMENTS_COUNT = 6;
 
   // todo ajoutez ici vos constantes et autres méthodes
   void settings();
 
   void home();
+
+  void bible();
 }
