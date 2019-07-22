@@ -30,6 +30,11 @@ public class AudioActivity extends AbstractActivity {
     }
 
     @Override
+    public void bible() {
+
+    }
+
+    @Override
     protected void onCreateActivity() {
 
     }

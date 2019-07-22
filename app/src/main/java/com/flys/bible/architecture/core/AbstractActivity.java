@@ -287,6 +287,9 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
                         case R.id.menu_home:
                             home();
                             break;
+                        case R.id.menu_bible:
+                            bible();
+                            break;
                         case R.id.menu_audio_bible:
                             startActivity(new Intent(AbstractActivity.this, AudioActivity_.class));
                             break;
