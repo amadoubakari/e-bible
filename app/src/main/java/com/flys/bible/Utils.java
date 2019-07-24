@@ -2,6 +2,7 @@ package com.flys.bible;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 
@@ -75,6 +76,17 @@ public class Utils implements Serializable {
         share.putExtra(Intent.EXTRA_STREAM, uri);
 
         context.startActivity(Intent.createChooser(share, "Share Image!"));
+    }
+
+    /**
+     * to calculate the dimensions of the bitmap
+     *
+     * @param bitmap
+     * @return
+     */
+    public int getSquareCropDimensionForBitmap(Bitmap bitmap) {
+        //use the smallest dimension of the image to crop to
+        return Math.min(bitmap.getWidth(), bitmap.getHeight());
     }
 
 }

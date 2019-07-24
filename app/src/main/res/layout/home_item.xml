@@ -8,11 +8,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
@@ -34,54 +35,72 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="72dp"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
 
                         <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:id="@+id/icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="16dp"
+                            android:layout_weight="10"
                             app:srcCompat="@drawable/sync" />
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="80"
                             android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/textView9"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="TextView" />
+                                android:layout_marginTop="16dp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="Daily verset"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/textView10"
+                                android:id="@+id/title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="TextView" />
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="6dp"
+                                android:fontFamily="@font/poppins_light"
+                                android:text="Mathieu 16:8" />
                         </LinearLayout>
 
                         <ImageView
                             android:id="@+id/imageView5"
-                            android:layout_width="wrap_content"
+                            android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_weight="10"
                             app:srcCompat="@drawable/ic_more_vert_black_24dp" />
 
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/imageView6"
+                        android:id="@+id/image"
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
-                        app:srcCompat="@drawable/tony" />
+                        android:layout_height="194dp"
+                        app:srcCompat="@drawable/sahel"
+                        android:scaleType="fitXY"/>
 
                     <TextView
-                        android:id="@+id/textView11"
+                        android:id="@+id/message"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. To use material design in your Android apps, follow the guidelines defined in the material design specification and use the new components and styles available in the material design support library. This page provides an overview of the patterns and APIs you should use.Material design is a comprehensive guide for visual, motion, and interaction design across platforms and devices. To use material design in your Android apps, follow the guidelines defined in the material design specification and use the new components and styles available in the material design support library. This page provides an overview of the patterns and APIs you should use." />
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/poppins_light"
+                        android:text="Material design is a comprehensive guide for visual, motion, and interaction design " />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -93,13 +112,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clipToPadding="false"
-                            android:columnCount="2"
-                            android:padding="16dp">
+                            android:columnCount="2">
 
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/material_button"
+                                android:id="@+id/button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:fontFamily="@font/poppins_light"
                                 android:text="Show more" />
 
                             <Space />

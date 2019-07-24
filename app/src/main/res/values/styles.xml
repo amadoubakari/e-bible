@@ -43,10 +43,14 @@
         <item name="android:textColor">@color/blue_400</item>
         <item name="android:itemBackground">@color/white</item>
         <item name="android:popupElevation">50dp</item>
+
     </style>
     <!--fullscreen config-->
     <style name="Dialog.FullScreen" parent="ThemeOverlay.MaterialComponents.Dialog">
         <item name="android:padding">0dp</item>
         <item name="android:windowBackground">@android:color/white</item>
+    </style>
+    <style name="menu_font_style">
+        <item name="fontFamily">@font/poppins_light</item>
     </style>
 </resources>

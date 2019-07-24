@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group
         android:id="@+id/group_sp"
         android:checkableBehavior="all">
@@ -7,22 +8,27 @@
         <item
             android:id="@+id/menu_home"
             android:icon="@drawable/ic_home_black_24dp"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Home" />
         <item
             android:id="@+id/menu_bible"
             android:icon="@drawable/ic_baseline_book_24px"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Bible" />
         <item
             android:id="@+id/menu_audio_bible"
             android:icon="@drawable/ic_baseline_play_circle_outline_24px"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Bible Audio" />
         <item
             android:id="@+id/menu_agenda"
             android:icon="@drawable/ic_baseline_calendar_today_24px"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Agenda" />
         <item
             android:id="@+id/menu_budget"
             android:icon="@drawable/ic_baseline_account_balance_wallet_24px"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Budget" />
     </group>
     <group
@@ -31,14 +37,17 @@
         <item
             android:id="@+id/menu_settings"
             android:icon="@drawable/ic_settings_black_24dp"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Settings" />
         <item
             android:id="@+id/connexion"
             android:icon="@drawable/ic_login_black_24px"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Sign in" />
         <item
             android:id="@+id/deconnexion"
             android:icon="@drawable/logout_rounded_left"
+            app:itemTextAppearance="@style/menu_font_style"
             android:title="Sign out"
             android:visible="false" />
     </group>
