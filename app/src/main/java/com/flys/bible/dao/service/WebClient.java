@@ -9,4 +9,5 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 public interface WebClient extends RestClientRootUrl, RestClientSupport {
 
   // todo : déclarez ici les URL à atteindre
+
 }
