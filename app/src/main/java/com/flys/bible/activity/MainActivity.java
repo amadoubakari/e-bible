@@ -15,11 +15,15 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 
 import com.flys.bible.R;
+import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.entities.DailyVersetData;
 import com.flys.bible.fragments.behavior.DummyFragment_;
 import com.flys.bible.fragments.behavior.GeneralSettingsFragment_;
 import com.flys.bible.fragments.behavior.HomeFragment_;
 import com.flys.bible.fragments.behavior.MainFragment_;
 import com.flys.bible.fragments.behavior.SettingsFragment_;
+
+import rx.Observable;
 
 
 @EActivity
@@ -52,7 +56,7 @@ public class MainActivity extends AbstractActivity {
     @Override
     protected AbstractFragment[] getFragments() {
         // todo : définir les fragments ici
-        return new AbstractFragment[]{new MainFragment_(), new DummyFragment_(), new SettingsFragment_(), new GeneralSettingsFragment_(),new HomeFragment_()};
+        return new AbstractFragment[]{new MainFragment_(), new DummyFragment_(), new SettingsFragment_(), new GeneralSettingsFragment_(), new HomeFragment_()};
     }
 
 
@@ -102,6 +106,26 @@ public class MainActivity extends AbstractActivity {
     @Override
     public void bible() {
         navigateToView(0, ISession.Action.SUBMIT);
+    }
+
+    @Override
+    public void setAuthorization(boolean authorization) {
+        dao.setAuthorization(authorization);
+    }
+
+    @Override
+    public Observable<DailyVerset> getDailyVerset(int element, int version) {
+        return dao.getDailyVerset(element, version);
+    }
+
+    @Override
+    public Observable<DailyVersetData> getDailyVersets(int version) {
+        return dao.getDailyVersets(version);
+    }
+
+    @Override
+    public Observable<byte[]> getDailyVersetImage() {
+        return dao.getDailyVersetImage();
     }
 }
 

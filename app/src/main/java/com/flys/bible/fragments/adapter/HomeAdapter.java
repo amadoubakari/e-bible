@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.flys.bible.R;
 import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.utils.FileUtils;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holderview> {
         DailyVerset dailyVerset = dailyVersets.get(position);
         holder.title.setText(dailyVerset.getVerse().getHuman_reference());
         holder.message.setText(dailyVerset.getVerse().getText());
+        holder.image.setImageDrawable(FileUtils.loadImageFromStorage("bible",dailyVerset.getVerse().getHuman_reference()+".png",context));
     }
 
     @Override

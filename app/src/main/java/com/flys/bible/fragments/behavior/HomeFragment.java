@@ -1,5 +1,11 @@
 package com.flys.bible.fragments.behavior;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +14,7 @@ import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.custom.CoreState;
 import com.flys.bible.entities.DailyVerset;
 import com.flys.bible.fragments.adapter.HomeAdapter;
+import com.flys.bible.utils.FileUtils;
 
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsMenu;
@@ -44,11 +51,32 @@ public class HomeFragment extends AbstractFragment {
     @Override
     protected void initView(CoreState previousState) {
         listmodels = new ArrayList<>();
-        listmodels.add(new DailyVerset(new DailyVerset.DailyVersetImage("",""),1,new DailyVerset.DailyVersetContent("","Mat 1:1","",null,"Daily message 1")));
-        listmodels.add(new DailyVerset(new DailyVerset.DailyVersetImage("",""),1,new DailyVerset.DailyVersetContent("","Mat 1:2","",null,"Daily message 1")));
-        homeAdapter=new HomeAdapter(listmodels,activity);
-        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-        recyclerView.setAdapter(homeAdapter);
+        numberOfRunningTasks = 1;
+        beginRunningTasks(numberOfRunningTasks);
+        mainActivity.setAuthorization(true);
+        mainActivity.setUrlServiceWebJson("https://developers.youversionapi.com/1.0");
+        executeInBackground(mainActivity.getDailyVersets(1), response -> {
+            // exploitation de la réponse
+            homeAdapter = new HomeAdapter(listmodels, activity);
+            recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+            recyclerView.setAdapter(homeAdapter);
+
+            response.getData().stream().forEach(dailyVerset -> {
+                Log.e(getClass().getSimpleName(), "------------------     image url : " + dailyVerset.getImage().getUrl());
+                numberOfRunningTasks = listmodels.size();
+                beginRunningTasks(numberOfRunningTasks);
+                mainActivity.setUrlServiceWebJson("http:"+dailyVerset.getImage().getUrl().replace("{width}","500").replace("{height}","500"));
+                mainActivity.setAuthorization(false);
+                executeInBackground(mainActivity.getDailyVersetImage(), res -> {
+                    FileUtils.saveToInternalStorage(res,"bible",dailyVerset.getVerse().getHuman_reference()+".png",activity);
+                    listmodels.add(dailyVerset);
+                    homeAdapter.notifyDataSetChanged();
+                });
+
+            });
+
+
+        });
     }
 
     @Override

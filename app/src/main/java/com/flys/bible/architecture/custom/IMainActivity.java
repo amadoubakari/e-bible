@@ -22,10 +22,10 @@ public interface IMainActivity extends IDao {
   boolean IS_DEBUG_ENABLED = true;
 
   // délai maximal d'attente de la réponse du serveur
-  int TIMEOUT = 1000;
+  int TIMEOUT = 1000000;
 
   // délai d'attente avant exécution de la requête client
-  int DELAY = 0;
+  int DELAY = 2000;
 
   // authentification basique
   boolean IS_BASIC_AUTHENTIFICATION_NEEDED = false;

@@ -20,6 +20,10 @@
             android:icon="@drawable/ic_baseline_play_circle_outline_24px"
             app:itemTextAppearance="@style/menu_font_style"
             android:title="Bible Audio" />
+    </group>
+    <group
+        android:id="@+id/group_otherss"
+        android:checkableBehavior="all">
         <item
             android:id="@+id/menu_agenda"
             android:icon="@drawable/ic_baseline_calendar_today_24px"

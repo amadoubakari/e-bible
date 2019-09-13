@@ -2,8 +2,10 @@ package com.flys.bible.entities;
 
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class DailyVerset implements Serializable {
+
     private DailyVersetImage image;
     private int day;
     private DailyVersetContent verse;
@@ -52,6 +54,30 @@ public class DailyVerset implements Serializable {
         public DailyVersetImage(String url, String attribution) {
             this.url = url;
             this.attribution = attribution;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getAttribution() {
+            return attribution;
+        }
+
+        public void setAttribution(String attribution) {
+            this.attribution = attribution;
+        }
+
+        @Override
+        public String toString() {
+            return "DailyVersetImage{" +
+                    "url='" + url + '\'' +
+                    ", attribution='" + attribution + '\'' +
+                    '}';
         }
     }
 
@@ -112,6 +138,26 @@ public class DailyVerset implements Serializable {
         public void setText(String text) {
             this.text = text;
         }
+
+        @Override
+        public String toString() {
+            return "DailyVersetContent{" +
+                    "url='" + url + '\'' +
+                    ", human_reference='" + human_reference + '\'' +
+                    ", html='" + html + '\'' +
+                    ", usfms=" + Arrays.toString(usfms) +
+                    ", text='" + text + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "DailyVerset{" +
+                "image=" + image +
+                ", day=" + day +
+                ", verse=" + verse +
+                '}';
     }
 }
 
