@@ -64,41 +64,53 @@ public class HomeFragment extends AbstractFragment {
     protected void initView(CoreState previousState) {
         listmodels = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(activity);
-        numberOfRunningTasks = 1;
-        beginRunningTasks(numberOfRunningTasks);
-        mainActivity.setAuthorization(true);
-        mainActivity.setUrlServiceWebJson("https://developers.youversionapi.com/1.0");
-        executeInBackground(mainActivity.getDailyVersets(1), response -> {
-            // exploitation de la réponse
+        if(session.getDailyVersets()!=null &&!session.getDailyVersets().isEmpty()){
+            listmodels.addAll(session.getDailyVersets());
             homeAdapter = new HomeAdapter(listmodels, activity);
-            recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.setAdapter(homeAdapter);
-            recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            recyclerView.setLayoutManager(linearLayoutManager);
+        }else{
+            numberOfRunningTasks = 1;
+            beginRunningTasks(numberOfRunningTasks);
+            mainActivity.setAuthorization(true);
+            mainActivity.setUrlServiceWebJson("https://developers.youversionapi.com/1.0");
+            executeInBackground(mainActivity.getDailyVersets(1), response -> {
+                // exploitation de la réponse
+                //listmodels.add(response.getData().get(1));
+                listmodels.addAll(response.getData());
+                session.setDailyVersets(response.getData());
+                homeAdapter = new HomeAdapter(listmodels, activity);
+                recyclerView.setAdapter(homeAdapter);
+                recyclerView.setLayoutManager(linearLayoutManager);
+            /*recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
                     if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
                         isScrolling = true;
+                        Log.e(getClass().getSimpleName(),"***********    newsate *****************");
                     }
+                    Log.e(getClass().getSimpleName(),"***********    normal *****************");
                 }
 
                 @Override
                 public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
+
                     currentItems = linearLayoutManager.getChildCount();
                     totalItems = linearLayoutManager.getItemCount();
                     scrollOutItems = linearLayoutManager.findFirstVisibleItemPosition();
 
                     if (isScrolling && (currentItems + scrollOutItems == totalItems)) {
+                        Log.e(getClass().getSimpleName(),"***********    iscrolling *****************");
                         isScrolling = false;
-                        progressBar.setVisibility(View.VISIBLE);
-
                         //fetch data
-                       listmodels.addAll(fetchDate(response.getData(), page, lastPosition));
-                       homeAdapter.notifyDataSetChanged();
+                        listmodels.addAll(fetchDate(response.getData(), page));
+                        homeAdapter.notifyDataSetChanged();
                     }
+                    Log.e(getClass().getSimpleName(),"***********    iscrolling normal  *****************");
                 }
-            });
+            });*/
 
      /*  response.getData().stream().forEach(dailyVerset -> {
                 Log.e(getClass().getSimpleName(), "------------------     image url : " + dailyVerset.getImage().getUrl());
@@ -115,14 +127,30 @@ public class HomeFragment extends AbstractFragment {
             });*/
 
 
-        });
+            });
+        }
     }
 
-    private List<DailyVerset> fetchDate(List<DailyVerset> listmodels, int Ppage, int PlastPosition) {
+    /**
+     * @param dailyVersets
+     * @param Ppage
+     * @return
+     */
+    private List<DailyVerset> fetchDate(List<DailyVerset> dailyVersets, int Ppage) {
+        progressBar.setVisibility(View.VISIBLE);
         List<DailyVerset> result = new ArrayList<>();
-
-        for (int i = PlastPosition; i < Ppage; i++) {
-            result.add(listmodels.get(i));
+        for (int i = lastPosition; i < Ppage; i++) {
+            //result.add(dailyVersets.get(i));
+            //beginRunningTasks(Ppage);
+            mainActivity.setUrlServiceWebJson("http:" + dailyVersets.get(i).getImage().getUrl().replace("{width}", "500").replace("{height}", "500"));
+            mainActivity.setAuthorization(false);
+            int finalI = i;
+            executeInBackground(mainActivity.getDailyVersetImage(), res -> {
+                Log.e(getClass().getSimpleName(),"***********  first image name length*****************"+res.length);
+                FileUtils.saveToInternalStorage(res, "bible", dailyVersets.get(finalI).getVerse().getHuman_reference() + ".png", activity);
+                listmodels.add(dailyVersets.get(finalI));
+                homeAdapter.notifyDataSetChanged();
+            });
             lastPosition++;
         }
         progressBar.setVisibility(View.GONE);

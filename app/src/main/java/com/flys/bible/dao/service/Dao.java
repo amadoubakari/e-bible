@@ -54,6 +54,7 @@ public class Dao extends AbstractDao implements IDao {
     @Override
     public void setUrlServiceWebJson(String url) {
         // on fixe l'URL du service web
+        Log.e(getClass().getSimpleName(), "************  service url : "+url);
         webClient.setRootUrl(url);
     }
 

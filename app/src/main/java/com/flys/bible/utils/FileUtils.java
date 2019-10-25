@@ -227,14 +227,11 @@ public class FileUtils {
      */
     public static String saveToInternalStorage(byte[] bytes, String dirName, String fileName, Context context) {
         Bitmap bitmapImage = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        ContextWrapper cw = new ContextWrapper(context);
+        ContextWrapper cw = new ContextWrapper(EApplicationContext.getContext());
         File directory = cw.getDir(dirName, Context.MODE_PRIVATE);
         // Create imageDir
         File mypath = new File(directory, fileName);
 
-        if (mypath.exists()) {
-            mypath.delete();
-        }
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
