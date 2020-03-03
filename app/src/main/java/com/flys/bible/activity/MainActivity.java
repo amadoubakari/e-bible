@@ -17,11 +17,11 @@ import org.androidannotations.annotations.OptionsMenu;
 import com.flys.bible.R;
 import com.flys.bible.entities.DailyVerset;
 import com.flys.bible.entities.DailyVersetData;
-import com.flys.bible.fragments.behavior.DummyFragment_;
 import com.flys.bible.fragments.behavior.GeneralSettingsFragment_;
 import com.flys.bible.fragments.behavior.HomeFragment_;
 import com.flys.bible.fragments.behavior.MainFragment_;
 import com.flys.bible.fragments.behavior.SettingsFragment_;
+import com.flys.bible.fragments.behavior.SplashScreenFragment_;
 
 import rx.Observable;
 
@@ -56,7 +56,8 @@ public class MainActivity extends AbstractActivity {
     @Override
     protected AbstractFragment[] getFragments() {
         // todo : définir les fragments ici
-        return new AbstractFragment[]{new MainFragment_(), new DummyFragment_(), new SettingsFragment_(), new GeneralSettingsFragment_(), new HomeFragment_()};
+        return new AbstractFragment[]{new SplashScreenFragment_(),new MainFragment_(),
+                new SettingsFragment_(), new GeneralSettingsFragment_(), new HomeFragment_()};
     }
 
 
@@ -105,7 +106,7 @@ public class MainActivity extends AbstractActivity {
 
     @Override
     public void bible() {
-        navigateToView(0, ISession.Action.SUBMIT);
+        navigateToView(1, ISession.Action.SUBMIT);
     }
 
     @Override

@@ -24,7 +24,7 @@
                 android:text="Ɓi ngi yi Yesu"
                 android:textColor="@color/blue_300"
                 android:textSize="16dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
