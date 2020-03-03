@@ -1,23 +1,32 @@
 package com.flys.bible.fragments.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.recyclerview.widget.RecyclerView;
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.flys.bible.R;
 import com.flys.bible.Utils;
 import com.flys.bible.entities.Verset;
+import com.flys.bible.utils.CustomTypefaceSpan;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -27,15 +36,11 @@ import java.util.List;
 public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holderview> {
     private List<Verset> listModels;
     private Context context;
-    private int resourceId;
-
-    private Calendar calendar;
 
 
     public VersetsAdapter(List<Verset> listModels, Context context) {
         this.listModels = listModels;
         this.context = context;
-        this.resourceId = resourceId;
     }
 
     @Override
@@ -45,6 +50,7 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
         return new Holderview(layout);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onBindViewHolder(Holderview holder, final int position) {
         Verset verset = listModels.get(position);
@@ -56,6 +62,7 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
             PopupMenu popupMenu = new PopupMenu(wrapper, holder.menu);
             popupMenu.setGravity(10);
             popupMenu.inflate(R.menu.option_menu);
+            applyFontToMenu(popupMenu.getMenu());
             popupMenu.setOnMenuItemClickListener(menuItem -> {
                 switch (menuItem.getItemId()) {
                     case R.id.option_menu_share:
@@ -69,7 +76,9 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
                 }
                 return false;
             });
-            popupMenu.show();
+            @SuppressLint("RestrictedApi") MenuPopupHelper menuHelper = new MenuPopupHelper(wrapper, (MenuBuilder) popupMenu.getMenu(), holder.menu);
+            menuHelper.setForceShowIcon(true);
+            menuHelper.show();
         });
 
 
@@ -103,4 +112,29 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
             menu = itemView.findViewById(R.id.option_menu_verset);
         }
     }
+
+    private void applyFontToMenu(Menu menu) {
+        for (int i=0;i<menu.size();i++){
+            MenuItem menuItem = menu.getItem(i);
+
+            //for aapplying a font to subMenu ...
+            SubMenu subMenu = menuItem.getSubMenu();
+            if (subMenu!=null && subMenu.size() >0 ) {
+                for (int j=0; j <subMenu.size();j++) {
+                    MenuItem subMenuItem = subMenu.getItem(j);
+                    applyFontToMenuItem(subMenuItem);
+                }
+            }
+            applyFontToMenuItem(menuItem);
+        }
+    }
+
+    private void applyFontToMenuItem(MenuItem mi) {
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/poppins_light.ttf");
+        SpannableString mNewTitle = new SpannableString(mi.getTitle());
+        mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        mi.setTitle(mNewTitle);
+    }
+
+
 }

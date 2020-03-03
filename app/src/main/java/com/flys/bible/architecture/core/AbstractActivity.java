@@ -72,8 +72,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
-    private CollapsingToolbarLayout collapsingToolbarLayout;
-
     private CircleImageView profile;
 
     // constructeur
@@ -172,13 +170,12 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.main_content);
-
-        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
+        // ajout de la barre d'onglets à la barre d'application
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         // image d'attente ?
         if (IS_WAITING_ICON_NEEDED) {
             // on ajoute l'image d'attente
@@ -202,8 +199,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
             // création barre d'onglets
             tabLayout = new CustomTabLayout(this);
             tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_text));
-            // ajout de la barre d'onglets à la barre d'application
-            AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
             appBarLayout.addView(tabLayout);
             // gestionnaire d'évt de la barre d'onglets
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -438,4 +433,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
     protected abstract int getFirstView();
 
     protected abstract boolean isCollapse();
+
+
 }

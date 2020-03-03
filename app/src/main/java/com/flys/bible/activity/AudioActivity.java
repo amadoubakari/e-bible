@@ -7,10 +7,16 @@ import com.flys.bible.R;
 import com.flys.bible.architecture.core.AbstractActivity;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.dao.service.IDao;
+import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.entities.DailyVersetData;
 import com.flys.bible.fragments.behavior.audio.HomeFragment_;
 
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
+
+import java.util.List;
+
+import rx.Observable;
 
 /**
  * Created by User on 17/10/2018.
@@ -70,4 +76,23 @@ public class AudioActivity extends AbstractActivity {
     }
 
 
+    @Override
+    public void setAuthorization(boolean authorization) {
+
+    }
+
+    @Override
+    public Observable<DailyVerset> getDailyVerset(int element,  int version) {
+        return null;
+    }
+
+    @Override
+    public Observable<DailyVersetData> getDailyVersets(int version) {
+        return null;
+    }
+
+    @Override
+    public Observable<byte[]> getDailyVersetImage() {
+        return null;
+    }
 }

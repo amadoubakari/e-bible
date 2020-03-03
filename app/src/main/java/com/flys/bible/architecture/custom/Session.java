@@ -2,6 +2,7 @@ package com.flys.bible.architecture.custom;
 
 import com.flys.bible.architecture.core.AbstractSession;
 import com.flys.bible.entities.Chapitre;
+import com.flys.bible.entities.DailyVerset;
 import com.flys.bible.entities.Verset;
 
 import java.util.Collection;
@@ -16,6 +17,8 @@ public class Session extends AbstractSession {
     private List<Chapitre> chapitres;
 
     private Collection<Verset> versets;
+
+    private List<DailyVerset> dailyVersets;
 
     public boolean isInstalled() {
         return installed;
@@ -39,5 +42,13 @@ public class Session extends AbstractSession {
 
     public void setVersets(Collection<Verset> versets) {
         this.versets = versets;
+    }
+
+    public List<DailyVerset> getDailyVersets() {
+        return dailyVersets;
+    }
+
+    public void setDailyVersets(List<DailyVerset> dailyVersets) {
+        this.dailyVersets = dailyVersets;
     }
 }

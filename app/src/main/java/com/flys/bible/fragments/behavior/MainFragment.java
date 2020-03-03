@@ -1,5 +1,6 @@
 package com.flys.bible.fragments.behavior;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.SearchView;
@@ -120,6 +121,7 @@ public class MainFragment extends AbstractFragment {
 
     @Override
     protected void initFragment(CoreState previousState) {
+        ((AppCompatActivity) mainActivity).getSupportActionBar().show();
         listModels = new ArrayList<>();
     }
 
@@ -140,7 +142,7 @@ public class MainFragment extends AbstractFragment {
 
         } else {
             try {
-                chapitres=listModels = chapitreDao.getAll();
+                chapitres = listModels = chapitreDao.getAll();
             } catch (DaoException e) {
                 e.printStackTrace();
             }
@@ -151,14 +153,16 @@ public class MainFragment extends AbstractFragment {
         viewPager.setPageTransformer(true, new DepthPageTransformer());
         title.setText(listModels.get(viewPager.getCurrentItem()).getNom());
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            public void onPageScrollStateChanged(int state) {}
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrollStateChanged(int state) {
+            }
+
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             public void onPageSelected(int position) {
                 title.setText(listModels.get(position).getNom());
             }
         });
-
 
 
     }
@@ -259,7 +263,7 @@ public class MainFragment extends AbstractFragment {
 
         final SortedSet<Chapitre> chapitreList = new TreeSet<>();
 
-        if(!query.isEmpty()){
+        if (!query.isEmpty()) {
             chapitres.forEach(chapitre -> {
                 Chapitre chapitre1 = chapitre;
                 List<Titre> titres = new ArrayList<>();
@@ -280,9 +284,9 @@ public class MainFragment extends AbstractFragment {
 
             return chapitreList.stream()
                     .sorted(Comparator.reverseOrder())
-                    .peek(chapitre1 -> Log.e(getClass().getSimpleName(),"----------------------- chapitre peek :"+chapitre1.getNumero()))
+                    .peek(chapitre1 -> Log.e(getClass().getSimpleName(), "----------------------- chapitre peek :" + chapitre1.getNumero()))
                     .collect(Collectors.toList());
-        }else {
+        } else {
             return chapitres.stream().collect(Collectors.toList());
         }
 

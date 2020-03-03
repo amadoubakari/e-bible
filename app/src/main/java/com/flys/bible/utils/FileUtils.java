@@ -193,7 +193,6 @@ public class FileUtils {
      */
     public static String saveToInternalStorage(Bitmap bitmapImage, String dirName, String fileName, Context context) {
         ContextWrapper cw = new ContextWrapper(context);
-        // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir(dirName, Context.MODE_PRIVATE);
         // Create imageDir
         File mypath = new File(directory, fileName);
@@ -201,6 +200,38 @@ public class FileUtils {
         if (mypath.exists()) {
             mypath.delete();
         }
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return mypath.getAbsolutePath();
+    }
+
+    /**
+     *
+     * @param bytes
+     * @param dirName
+     * @param fileName
+     * @param context
+     * @return
+     */
+    public static String saveToInternalStorage(byte[] bytes, String dirName, String fileName, Context context) {
+        Bitmap bitmapImage = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        ContextWrapper cw = new ContextWrapper(EApplicationContext.getContext());
+        File directory = cw.getDir(dirName, Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath = new File(directory, fileName);
+
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
