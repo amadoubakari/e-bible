@@ -6,6 +6,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import com.flys.bible.utils.CustomTypefaceSpan;
+import com.flys.common_tools.dialog.AbstractDialogActivity;
+import com.flys.common_tools.dialog.AbstractDialogFragmentInterface;
+import com.flys.common_tools.utils.Utils;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
@@ -46,7 +49,7 @@ import java.io.IOException;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public abstract class AbstractActivity extends AppCompatActivity implements IMainActivity {
+public abstract class AbstractActivity extends AppCompatActivity implements IMainActivity, AbstractDialogFragmentInterface {
     // couche [DAO]
     private IDao dao;
     // la session
@@ -288,6 +291,9 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
                         case R.id.menu_audio_bible:
                             startActivity(new Intent(AbstractActivity.this, AudioActivity_.class));
                             break;
+                        case R.id.menu_recommander:
+                            showEditDialog();
+                            break;
                         default:
                             break;
                     }
@@ -370,6 +376,19 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    //Récupération du texte issu de la boite de dialogue
+    @Override
+    public void receivedDate(String data) {
+        Utils.shareText(this, "Dubun GUIZIGA", data + "  https://play.google.com/store/apps/details?id=com.sprintpaycommunity", "Recommandation de l'application.");
+    }
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        AbstractDialogActivity dialogActivity = new AbstractDialogActivity("Recommandation", R.mipmap.ic_launcher,R.style.AlertDialogTheme,R.style.BodyTextStyle);
+        dialogActivity.show(fm, "fragment_edit_name");
     }
 
 
