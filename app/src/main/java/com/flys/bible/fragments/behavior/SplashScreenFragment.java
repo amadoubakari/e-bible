@@ -33,7 +33,7 @@ public class SplashScreenFragment extends AbstractFragment {
 
     @Override
     protected void initView(CoreState previousState) {
-        new Handler().postDelayed(() -> mainActivity.navigateToView(1, ISession.Action.SUBMIT), 10000);
+        new Handler().postDelayed(() -> mainActivity.navigateToView(1, ISession.Action.SUBMIT), 2000);
     }
 
     @Override

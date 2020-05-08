@@ -1,27 +1,26 @@
 package com.flys.bible.activity;
 
 import android.util.Log;
-import android.widget.Toast;
 
+import com.flys.bible.R;
 import com.flys.bible.architecture.core.AbstractActivity;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.architecture.core.ISession;
 import com.flys.bible.architecture.custom.Session;
 import com.flys.bible.dao.service.Dao;
 import com.flys.bible.dao.service.IDao;
-
-import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.OptionsMenu;
-
-import com.flys.bible.R;
-import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.dto.DailyVersetDto;
 import com.flys.bible.entities.DailyVersetData;
 import com.flys.bible.fragments.behavior.GeneralSettingsFragment_;
 import com.flys.bible.fragments.behavior.HomeFragment_;
 import com.flys.bible.fragments.behavior.MainFragment_;
 import com.flys.bible.fragments.behavior.SettingsFragment_;
 import com.flys.bible.fragments.behavior.SplashScreenFragment_;
+import com.flys.bible.fragments.behavior.audio.AudioHomeFragment_;
+
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsMenu;
 
 import rx.Observable;
 
@@ -56,8 +55,9 @@ public class MainActivity extends AbstractActivity {
     @Override
     protected AbstractFragment[] getFragments() {
         // todo : définir les fragments ici
-        return new AbstractFragment[]{new SplashScreenFragment_(),new MainFragment_(),
-                new SettingsFragment_(), new GeneralSettingsFragment_(), new HomeFragment_()};
+        return new AbstractFragment[]{new SplashScreenFragment_(), new MainFragment_(),
+                new SettingsFragment_(), new GeneralSettingsFragment_(), new HomeFragment_(),
+                new AudioHomeFragment_()};
     }
 
 
@@ -115,7 +115,7 @@ public class MainActivity extends AbstractActivity {
     }
 
     @Override
-    public Observable<DailyVerset> getDailyVerset(int element, int version) {
+    public Observable<DailyVersetDto> getDailyVerset(int element, int version) {
         return dao.getDailyVerset(element, version);
     }
 

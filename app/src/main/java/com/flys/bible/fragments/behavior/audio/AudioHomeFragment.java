@@ -14,9 +14,9 @@ import org.androidannotations.annotations.ViewById;
 /**
  * Created by User on 17/10/2018.
  */
-@EFragment(R.layout.test_layout)
+@EFragment(R.layout.audio_home_fragment_layout)
 @OptionsMenu(R.menu.menu_vide)
-public class HomeFragment extends AbstractFragment {
+public class AudioHomeFragment extends AbstractFragment {
 
     @ViewById(R.id.helloworld)
     protected TextView helloworld;

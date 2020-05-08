@@ -51,4 +51,7 @@ public class Session extends AbstractSession {
     public void setDailyVersets(List<DailyVerset> dailyVersets) {
         this.dailyVersets = dailyVersets;
     }
+    public void addDailyVerset(DailyVerset dailyVerset){
+        this.dailyVersets.add(dailyVerset);
+    }
 }

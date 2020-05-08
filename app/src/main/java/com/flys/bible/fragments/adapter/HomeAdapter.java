@@ -1,7 +1,6 @@
 package com.flys.bible.fragments.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +31,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holderview> {
     @Override
     public Holderview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout
-.home_item, parent, false);
+                .home_item, parent, false);
 
         return new Holderview(layout);
     }
@@ -42,13 +41,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holderview> {
         DailyVerset dailyVerset = dailyVersets.get(position);
         holder.title.setText(dailyVerset.getVerse().getHuman_reference());
         holder.message.setText(dailyVerset.getVerse().getText());
-        //Log.e(getClass().getSimpleName(),"***** adapter image name : "+dailyVerset.getVerse().getHuman_reference()+".png");
-        //holder.image.setImageDrawable(FileUtils.loadImageFromStorage("bible",dailyVerset.getVerse().getHuman_reference()+".png",context));
+        holder.image.setImageDrawable(FileUtils.loadImageFromStorage("bible", dailyVerset.getDay() + ".png", context));
     }
 
     @Override
     public int getItemCount() {
-        if(!dailyVersets.isEmpty()){
+        if (!dailyVersets.isEmpty()) {
             return dailyVersets.size();
         }
         return 0;

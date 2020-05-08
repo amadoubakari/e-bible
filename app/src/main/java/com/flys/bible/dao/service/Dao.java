@@ -2,7 +2,7 @@ package com.flys.bible.dao.service;
 
 import android.util.Log;
 
-import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.dto.DailyVersetDto;
 import com.flys.bible.entities.DailyVersetData;
 
 import org.androidannotations.annotations.AfterInject;
@@ -54,7 +54,7 @@ public class Dao extends AbstractDao implements IDao {
     @Override
     public void setUrlServiceWebJson(String url) {
         // on fixe l'URL du service web
-        Log.e(getClass().getSimpleName(), "************  service url : "+url);
+        Log.e(getClass().getSimpleName(), "************  service url : " + url);
         webClient.setRootUrl(url);
     }
 
@@ -104,14 +104,13 @@ public class Dao extends AbstractDao implements IDao {
 
 
     @Override
-    public Observable<DailyVerset> getDailyVerset(int element, int version) {
-
+    public Observable<DailyVersetDto> getDailyVerset(int element, int version) {
         return getResponse(() -> webClient.getDailyVerset(element, version));
     }
 
     @Override
     public Observable<byte[]> getDailyVersetImage() {
-        return getResponse(()->webClient.getDailyVersetImage());
+        return getResponse(() -> webClient.getDailyVersetImage());
     }
 
     @Override

@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flys.bible.R;
 import com.flys.bible.Utils;
@@ -32,6 +34,7 @@ import com.flys.bible.entities.Titre;
 import com.flys.bible.entities.Verset;
 import com.flys.bible.fragments.adapter.ChapitreAdapter;
 import com.flys.bible.utils.DepthPageTransformer;
+import com.flys.bible.utils.EApplicationContext;
 import com.flys.generictools.dao.daoException.DaoException;
 import com.j256.ormlite.dao.ForeignCollection;
 
@@ -43,6 +46,7 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.ViewById;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -53,6 +57,8 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+
+import io.reactivex.rxjava3.core.Scheduler;
 
 /**
  * Created by AMADOU BAKARI on 09/09/2018.
@@ -127,25 +133,24 @@ public class MainFragment extends AbstractFragment {
 
     @Override
     protected void initView(CoreState previousState) {
-
-        //If it's the first time to come to the application install it
-        if (!initApp.init()) {
-            Log.e(getClass().getSimpleName(), "Not installed updateOnRestore !");
-            //Installation
-            initApp.install();
-
+        //Installation de l'application
+        if(!session.isInstalled()){
+            install();
         }
 
+        //If it's the first time to come to the application install it
+        /*if (!initApp.init()) {
+            Log.e(getClass().getSimpleName(), "Not installed updateOnRestore !");
+            //Installation
+            //initApp.install();
+            //initApp.initialize().subscribeOn();
+
+
+        }*/
+
         //Récuperation des chapitres
-
-        if (session.getChapitres() != null && session.getChapitres().isEmpty()) {
-
-        } else {
-            try {
-                chapitres = listModels = chapitreDao.getAll();
-            } catch (DaoException e) {
-                e.printStackTrace();
-            }
+        if (!session.getChapitres().isEmpty()) {
+            chapitres=listModels = session.getChapitres();
         }
 
         chapitreAdapter = new ChapitreAdapter(activity, listModels);
@@ -292,5 +297,19 @@ public class MainFragment extends AbstractFragment {
 
     }
 
-
+    public void install() {
+        //Chargement de la base de données
+        ObjectMapper mapper = new ObjectMapper();
+        Livre livre = null;
+        try {
+            livre = mapper.readValue(activity.getAssets().open("new_testament/mathieu.json"), new TypeReference<Livre>() {
+            });
+            session.setChapitres(livre.getChapitres());
+            session.setInstalled(true);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

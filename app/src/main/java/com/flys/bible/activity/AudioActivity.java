@@ -1,20 +1,15 @@
 package com.flys.bible.activity;
 
-import android.os.Bundle;
-import android.view.View;
-
 import com.flys.bible.R;
 import com.flys.bible.architecture.core.AbstractActivity;
 import com.flys.bible.architecture.core.AbstractFragment;
 import com.flys.bible.dao.service.IDao;
-import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.dto.DailyVersetDto;
 import com.flys.bible.entities.DailyVersetData;
-import com.flys.bible.fragments.behavior.audio.HomeFragment_;
+import com.flys.bible.fragments.behavior.audio.AudioHomeFragment_;
 
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
-
-import java.util.List;
 
 import rx.Observable;
 
@@ -52,7 +47,7 @@ public class AudioActivity extends AbstractActivity {
 
     @Override
     protected AbstractFragment[] getFragments() {
-        return new AbstractFragment[]{new HomeFragment_()};
+        return new AbstractFragment[]{new AudioHomeFragment_()};
     }
 
     @Override
@@ -82,7 +77,7 @@ public class AudioActivity extends AbstractActivity {
     }
 
     @Override
-    public Observable<DailyVerset> getDailyVerset(int element,  int version) {
+    public Observable<DailyVersetDto> getDailyVerset(int element, int version) {
         return null;
     }
 

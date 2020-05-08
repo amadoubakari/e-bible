@@ -218,7 +218,6 @@ public class FileUtils {
     }
 
     /**
-     *
      * @param bytes
      * @param dirName
      * @param fileName
@@ -262,7 +261,7 @@ public class FileUtils {
 
         ContextWrapper cw = new ContextWrapper(context);
         File directory = cw.getDir(path, Context.MODE_PRIVATE);
-        path= directory.getAbsolutePath();
+        path = directory.getAbsolutePath();
         BitmapDrawable background = null;
         try {
             File f = new File(path, fileName);
@@ -302,14 +301,13 @@ public class FileUtils {
     }
 
     /**
-     *
      * @param context
      * @param uri
      * @return
      * @throws IOException
      */
-    public static Bitmap getBytes(Context context,Uri uri) throws IOException {
-        InputStream iStream =   context.getContentResolver().openInputStream(uri);
+    public static Bitmap getBytes(Context context, Uri uri) throws IOException {
+        InputStream iStream = context.getContentResolver().openInputStream(uri);
         ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
         int bufferSize = 1024;
         byte[] buffer = new byte[bufferSize];
@@ -318,7 +316,21 @@ public class FileUtils {
         while ((len = iStream.read(buffer)) != -1) {
             byteBuffer.write(buffer, 0, len);
         }
-        return  BitmapFactory.decodeByteArray(byteBuffer.toByteArray(), 0, byteBuffer.toByteArray().length);
+        return BitmapFactory.decodeByteArray(byteBuffer.toByteArray(), 0, byteBuffer.toByteArray().length);
 
+    }
+
+    /**
+     * Suppression d'un fichier existant
+     *
+     * @param fileName
+     * @param context
+     */
+    public static boolean fileExist(String dirName, String fileName, Context context) {
+        ContextWrapper cw = new ContextWrapper(context);
+        File directory = cw.getDir(dirName, Context.MODE_PRIVATE);
+        // Create imageDir
+        File file = new File(directory, fileName);
+        return file.exists();
     }
 }

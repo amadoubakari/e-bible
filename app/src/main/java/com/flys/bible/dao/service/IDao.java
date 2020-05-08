@@ -1,6 +1,6 @@
 package com.flys.bible.dao.service;
 
-import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.dto.DailyVersetDto;
 import com.flys.bible.entities.DailyVersetData;
 
 import rx.Observable;
@@ -28,7 +28,7 @@ public interface IDao {
     void setDelay(int delay);
 
     //Daily verset list
-    Observable<DailyVerset> getDailyVerset(int element, int version);
+    Observable<DailyVersetDto> getDailyVerset(int day, int version);
 
     //Daily data list
     Observable<DailyVersetData> getDailyVersets(int version);

@@ -289,7 +289,8 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
                             bible();
                             break;
                         case R.id.menu_audio_bible:
-                            startActivity(new Intent(AbstractActivity.this, AudioActivity_.class));
+                            navigateToView(5, ISession.Action.SUBMIT);
+                            //startActivity(new Intent(AbstractActivity.this, AudioActivity_.class));
                             break;
                         case R.id.menu_recommander:
                             showEditDialog();
