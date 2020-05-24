@@ -1,5 +1,5 @@
 #
-# generated on 2020/03/19 07:19:02
+# generated on 2020/05/24 05:12:19
 #
 # --table-start--
 dataClass=com.flys.bible.entities.Testament
@@ -145,6 +145,7 @@ fieldName=html
 # --field-end--
 # --field-start--
 fieldName=usfms
+dataPersister=SERIALIZABLE
 # --field-end--
 # --field-start--
 fieldName=text
