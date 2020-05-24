@@ -58,7 +58,7 @@ android {
 }
 
 
-def AAVersion = '4.4.0'
+def AAVersion = '4.7.0'
 
 dependencies {
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
@@ -69,19 +69,19 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.0'
     implementation 'io.reactivex:rxandroid:1.2.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.13'
     /*Pour les images circulaires*/
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     // https://mvnrepository.com/artifact/com.j256.ormlite/ormlite-android
     implementation 'com.j256.ormlite:ormlite-android:5.1'
     /*Material design*/
     //implementation 'com.google.android.material:material:1.0.0'
 
-    implementation 'com.google.android.material:material:1.1.0-alpha09'
+    implementation 'com.google.android.material:material:1.2.0-alpha06'
     implementation project(':user-authentication')
     implementation project(':generictools')
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
