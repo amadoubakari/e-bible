@@ -265,9 +265,7 @@ public class MainFragment extends AbstractFragment {
      * @return
      */
     private List<Chapitre> filter(Collection<Chapitre> chapitres, final String query) {
-
         final SortedSet<Chapitre> chapitreList = new TreeSet<>();
-
         if (!query.isEmpty()) {
             chapitres.forEach(chapitre -> {
                 Chapitre chapitre1 = chapitre;
