@@ -44,7 +44,6 @@ public class MainActivity extends AbstractActivity {
         }
         // session
         this.session = (Session) super.session;
-        // todo : on continue les initialisations commencées par la classe parent
     }
 
     @Override
@@ -54,7 +53,6 @@ public class MainActivity extends AbstractActivity {
 
     @Override
     protected AbstractFragment[] getFragments() {
-        // todo : définir les fragments ici
         return new AbstractFragment[]{new SplashScreenFragment_(), new MainFragment_(),
                 new SettingsFragment_(), new GeneralSettingsFragment_(), new HomeFragment_(),
                 new AudioHomeFragment_()};
@@ -86,12 +84,6 @@ public class MainActivity extends AbstractActivity {
     @Override
     public boolean onSupportNavigateUp() {
         return true;
-    }
-
-    //Navigation
-    @Override
-    public void onBackPressed() {
-        navigateToView(session.getPreviousView(), ISession.Action.SUBMIT);
     }
 
     @Override
@@ -127,6 +119,17 @@ public class MainActivity extends AbstractActivity {
     @Override
     public Observable<byte[]> getDailyVersetImage() {
         return dao.getDailyVersetImage();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mViewPager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
+        } else {
+            // Otherwise, select the previous step.
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+        }
     }
 }
 
