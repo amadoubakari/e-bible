@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/google_sans"
             android:gravity="center"
             android:text="TextView"
             android:textColor="@color/white"
@@ -56,7 +56,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_light" />
+                android:fontFamily="@font/google_sans" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -18,7 +18,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/google_sans"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:text="General setttings"
@@ -54,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Mon compte" />
 
                     <ImageView
@@ -93,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Mon compte Gmail" />
 
                     <ImageView
@@ -132,7 +132,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Synchroniser" />
 
                     <ImageView
@@ -151,7 +151,7 @@
             android:id="@+id/settings_contacts"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/google_sans"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:text="Contacts Settings"
@@ -187,7 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Mes contacts" />
 
                     <ImageView
@@ -226,7 +226,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Mes messages" />
 
                     <ImageView
@@ -244,7 +244,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/google_sans"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             android:text="Sauvegarde et Restauration"
@@ -280,7 +280,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Sauvegarder mes données" />
 
                     <ImageView
@@ -319,7 +319,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Restauration de données" />
 
                     <ImageView

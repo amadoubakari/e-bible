@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/google_sans"
             android:text="AMADOU BAKARI" />
 
         <ImageView
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/google_sans"
             android:gravity="center_horizontal"
             android:text="this does not set the TextView centered, it only forces it to have two lines. Still, this answer is not so bad it needs to be downvoted. this does not set the TextView centered, it only forces it to have two lines. Still, this answer is not so bad it needs to be downvoted. "
             android:textSize="12sp" />

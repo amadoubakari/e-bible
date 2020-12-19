@@ -68,7 +68,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
                                 android:layout_marginBottom="6dp"
-                                android:fontFamily="@font/poppins_light"
+                                android:fontFamily="@font/google_sans"
                                 android:text="Mathieu 16:8" />
                         </LinearLayout>
 
@@ -98,7 +98,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
-                        android:fontFamily="@font/poppins_light"
+                        android:fontFamily="@font/google_sans"
                         android:text="Material design is a comprehensive guide for visual, motion, and interaction design " />
 
                     <LinearLayout
@@ -118,7 +118,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="8dp"
-                                android:fontFamily="@font/poppins_light"
+                                android:fontFamily="@font/google_sans"
                                 android:text="Show more" />
 
                             <Space />

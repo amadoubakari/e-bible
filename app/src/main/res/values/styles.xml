@@ -51,7 +51,7 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
     <style name="menu_font_style">
-        <item name="fontFamily">@font/poppins_light</item>
+        <item name="fontFamily">@font/google_sans</item>
     </style>
     <style name="ActionBarTheme" parent="AppTheme.AppBarOverlay">
         <item name="android:textColorPrimary">@color/blue_300</item>
@@ -61,7 +61,7 @@
         <item name="android:textSize">16dp</item>
         <!-- Set title color -->
         <item name="android:textColor">@color/blue_300</item>
-        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:fontFamily">@font/google_sans</item>
     </style>
     <!--  Alert dialog style -->
     <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">

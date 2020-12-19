@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.1"
-            android:alpha="0.7"
+            android:alpha="0.9"
             android:src="@drawable/ic_keyboard_arrow_left_24px" />
 
         <TextView
@@ -30,13 +30,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/google_sans"
             android:gravity="left"
             android:paddingLeft="10dp"
             android:text="Matiye"
-            android:textColor="@color/blue_300"
-            android:textSize="16dp"
-            android:textStyle="normal" />
+            android:textColor="@color/blue_500"
+            android:textSize="15sp"/>
 
         <ImageView
             android:id="@+id/next"
@@ -44,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.1"
-            android:alpha="0.7"
+            android:alpha="0.9"
             android:src="@drawable/ic_keyboard_arrow_right_24px" />
     </LinearLayout>
 

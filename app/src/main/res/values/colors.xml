@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#4FC3F7</color>
-  <color name="colorPrimaryDark">#039BE5</color>
+  <color name="colorPrimary">#4285F4</color>
+  <color name="colorPrimaryDark">#4285F4</color>
   <color name="colorAccent">#FF4081</color>
   <color name="floral_white">#FFFAF0</color>
 
@@ -41,6 +41,7 @@
   <color name="light_blue_300">#4FC3F7</color>
   <color name="light_blue_400">#29B6F6</color>
   <color name="light_blue_500">#03A9F4</color>
+  <color name="light_blue_A500">#03A9F4</color>
   <color name="light_blue_600">#039BE5</color>
   <color name="light_blue_700">#0288D1</color>
   <color name="light_blue_800">#0277BD</color>
