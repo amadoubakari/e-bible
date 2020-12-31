@@ -34,7 +34,7 @@
             android:gravity="left"
             android:paddingLeft="10dp"
             android:text="Matiye"
-            android:textColor="@color/blue_500"
+            android:textColor="@color/colorPrimary"
             android:textSize="15sp"/>
 
         <ImageView

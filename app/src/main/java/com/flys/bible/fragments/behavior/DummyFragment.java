@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-@EFragment(R.layout.test_layout)
+@EFragment(R.layout.navigation_header)
 @OptionsMenu(R.menu.menu_vide)
 public class DummyFragment extends AbstractFragment {
 

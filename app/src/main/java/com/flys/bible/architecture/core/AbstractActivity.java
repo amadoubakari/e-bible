@@ -1,19 +1,19 @@
 package com.flys.bible.architecture.core;
 
-import android.content.Intent;
+
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
+import com.flys.bible.Utils;
 import com.flys.bible.utils.CustomTypefaceSpan;
-import com.flys.common_tools.dialog.AbstractDialogActivity;
-import com.flys.common_tools.dialog.AbstractDialogFragmentInterface;
-import com.flys.common_tools.utils.Utils;
+import com.flys.tools.dialog.AbstractDialogActivity;
+import com.flys.tools.dialog.AbstractDialogFragmentInterface;
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.core.content.ContextCompat;
@@ -433,7 +433,7 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
      * @param mi
      */
     private void applyFontToMenuItem(MenuItem mi) {
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/poppins_light.ttf");
+        Typeface font = ResourcesCompat.getFont(this,R.font.google_sans);
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mi.setTitle(mNewTitle);

@@ -5,4 +5,5 @@
 <string name="Close">CLOSE</string>
 <string name="app_name_release">Ɓimituho Mipal</string>
 <string name="app_name_debug">Ɓimituho Mipal (Debug)</string>
+    <string name="app_version">1.0.0</string>
 </resources>

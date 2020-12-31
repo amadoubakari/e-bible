@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.flys.bible.R;
@@ -130,7 +131,7 @@ public class VersetsAdapter extends RecyclerView.Adapter<VersetsAdapter.Holdervi
     }
 
     private void applyFontToMenuItem(MenuItem mi) {
-        Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/poppins_light.ttf");
+        Typeface font = ResourcesCompat.getFont(context,R.font.google_sans);
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mi.setTitle(mNewTitle);

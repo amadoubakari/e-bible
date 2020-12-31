@@ -18,9 +18,6 @@ import org.androidannotations.annotations.ViewById;
 @OptionsMenu(R.menu.menu_vide)
 public class AudioHomeFragment extends AbstractFragment {
 
-    @ViewById(R.id.helloworld)
-    protected TextView helloworld;
-
     @Override
     public CoreState saveFragment() {
         return new CoreState();
@@ -38,7 +35,6 @@ public class AudioHomeFragment extends AbstractFragment {
 
     @Override
     protected void initView(CoreState previousState) {
-        Toast.makeText(activity,"Je suis lancé",Toast.LENGTH_LONG).show();
     }
 
     @Override

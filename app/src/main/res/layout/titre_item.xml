@@ -22,7 +22,7 @@
                 android:paddingRight="20dp"
                 android:paddingTop="5dp"
                 android:text="Ɓi ngi yi Yesu"
-                android:textColor="@color/blue_500"
+                android:textColor="@color/colorPrimary"
                 android:textSize="15sp"
             />
 

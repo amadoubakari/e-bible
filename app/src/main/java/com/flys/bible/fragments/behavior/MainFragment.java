@@ -2,6 +2,7 @@ package com.flys.bible.fragments.behavior;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.SearchView;
 
@@ -35,6 +36,7 @@ import com.flys.bible.entities.Verset;
 import com.flys.bible.fragments.adapter.ChapitreAdapter;
 import com.flys.bible.utils.DepthPageTransformer;
 import com.flys.bible.utils.EApplicationContext;
+import com.flys.bible.utils.RxSearchObservable;
 import com.flys.generictools.dao.daoException.DaoException;
 import com.j256.ormlite.dao.ForeignCollection;
 
@@ -56,9 +58,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 import io.reactivex.rxjava3.core.Scheduler;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by AMADOU BAKARI on 09/09/2018.
@@ -134,23 +142,12 @@ public class MainFragment extends AbstractFragment {
     @Override
     protected void initView(CoreState previousState) {
         //Installation de l'application
-        if(!session.isInstalled()){
+        if (!session.isInstalled()) {
             install();
         }
-
-        //If it's the first time to come to the application install it
-        /*if (!initApp.init()) {
-            Log.e(getClass().getSimpleName(), "Not installed updateOnRestore !");
-            //Installation
-            //initApp.install();
-            //initApp.initialize().subscribeOn();
-
-
-        }*/
-
         //Récuperation des chapitres
         if (!session.getChapitres().isEmpty()) {
-            chapitres=listModels = session.getChapitres();
+            chapitres = listModels = session.getChapitres();
         }
 
         chapitreAdapter = new ChapitreAdapter(activity, listModels);
@@ -309,5 +306,44 @@ public class MainFragment extends AbstractFragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void initSearchFeatureNew() {
+        AtomicReference<String> queryWords = new AtomicReference<>();
+        //Launch the loader
+        beginRunningTasks(1);
+        RxSearchObservable.fromSearchView(searchView)
+                .debounce(1500, TimeUnit.MILLISECONDS)
+                .distinctUntilChanged()
+                .switchMap((Func1<String, Observable<List<Chapitre>>>) query -> null)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(chapters -> {
+
+                });
+    }
+
+    List<Chapitre> searchChapters(List<Chapitre> chapitres,String words) {
+        List<Chapitre> result=new ArrayList<>();
+        chapitres.parallelStream()
+                .forEach(chapitre -> {
+                    Chapitre chapterLocal = new Chapitre();
+                    chapterLocal.setNumero(chapitre.getNumero());
+                    chapterLocal.setNom(chapitre.getNom());
+                    chapitre.getTitres().forEach(titre -> {
+                        List<Verset> versets=new ArrayList<>();
+                        titre.getVersets().stream().forEach(verset -> {
+                            if(true){
+                                versets.add(verset);
+                            }
+                        });
+                        if(!versets.isEmpty()){
+                            titre.setVersets(versets);
+                            chapitre.getTitres().add(titre);
+                            result.add(chapitre);
+                        }
+                    });
+                });
+        return null;
     }
 }

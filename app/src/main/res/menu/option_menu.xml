@@ -7,13 +7,13 @@
     android:title="Partager"
     android:icon="@drawable/ic_baseline_share_24px"
     app:itemTextAppearance="@style/menu_font_style"
-    app:iconTint="@color/blue_400"/>
+    app:iconTint="@color/colorPrimary"/>
 <item
     android:id="@+id/option_menu_mark"
     android:title="Enregistrer"
     android:icon="@drawable/ic_baseline_backup_24px"
     app:itemTextAppearance="@style/menu_font_style"
-    app:iconTint="@color/blue_400"/>
+    app:iconTint="@color/colorPrimary"/>
 
 
 
