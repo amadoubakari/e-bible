@@ -9,21 +9,24 @@
             android:id="@+id/menu_home"
             android:icon="@drawable/ic_home_black_24dp"
             app:itemTextAppearance="@style/menu_font_style"
-            android:title="Home" />
+            android:title="Home"
+            android:visible="false"/>
         <item
             android:id="@+id/menu_bible"
             android:icon="@drawable/ic_baseline_book_24px"
             app:itemTextAppearance="@style/menu_font_style"
-            android:title="Bible" />
+            android:title="Home" />
         <item
             android:id="@+id/menu_audio_bible"
             android:icon="@drawable/ic_baseline_play_circle_outline_24px"
             app:itemTextAppearance="@style/menu_font_style"
-            android:title="Bible Audio" />
+            android:title="Bible Audio"
+            android:visible="false"/>
     </group>
     <group
         android:id="@+id/group_otherss"
-        android:checkableBehavior="all">
+        android:checkableBehavior="all"
+        android:visible="false">
         <item
             android:id="@+id/menu_agenda"
             android:icon="@drawable/ic_baseline_calendar_today_24px"
@@ -47,12 +50,14 @@
             android:id="@+id/menu_settings"
             android:icon="@drawable/ic_settings_black_24dp"
             app:itemTextAppearance="@style/menu_font_style"
-            android:title="Settings" />
+            android:title="Settings"
+            android:visible="false"/>
         <item
             android:id="@+id/connexion"
             android:icon="@drawable/ic_login_black_24px"
             app:itemTextAppearance="@style/menu_font_style"
-            android:title="Sign in" />
+            android:title="Sign in"
+            android:visible="false"/>
         <item
             android:id="@+id/deconnexion"
             android:icon="@drawable/logout_rounded_left"

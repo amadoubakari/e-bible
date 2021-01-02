@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.SearchView;
 
+import android.content.res.AssetManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -195,7 +196,7 @@ public class MainFragment extends AbstractFragment {
     protected void doRechercher() {
         // on récupère le client choisi
         searchView = (SearchView) menuItem.getActionView();
-        changeSearchTextColor(searchView);
+        /*changeSearchTextColor(searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -235,7 +236,7 @@ public class MainFragment extends AbstractFragment {
                 viewPager.setPageTransformer(true, new DepthPageTransformer());
             }
         });
-
+*/
     }
 
     /**
@@ -297,7 +298,7 @@ public class MainFragment extends AbstractFragment {
         ObjectMapper mapper = new ObjectMapper();
         Livre livre = null;
         try {
-            livre = mapper.readValue(activity.getAssets().open("new_testament/mathieu.json"), new TypeReference<Livre>() {
+            livre = mapper.readValue(activity.getAssets().open("new_testament/mathieu.json", AssetManager.ACCESS_STREAMING), new TypeReference<Livre>() {
             });
             session.setChapitres(livre.getChapitres());
             session.setInstalled(true);

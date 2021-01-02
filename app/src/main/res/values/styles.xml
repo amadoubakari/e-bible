@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/blue_300</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="Theme.MaterialComponents.NoActionBar">
@@ -73,21 +73,21 @@
 
     <style name="BodyTextStyle" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
         <item name="android:textColor">@color/grey_700</item>
-        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/google_sans</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/black</item>
-        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/google_sans</item>
     </style>
 
     <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/google_sans</item>
     </style>
     <style name="TitleTextStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textColor">@color/grey_600</item>
-        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:fontFamily">@font/google_sans</item>
     </style>
 </resources>
