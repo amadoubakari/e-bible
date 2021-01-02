@@ -57,7 +57,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:fontFamily="@font/poppins_bold"
+                                android:fontFamily="@font/google_sans"
                                 android:text="Daily verset"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -88,8 +88,7 @@
                         android:id="@+id/image"
                         android:layout_width="match_parent"
                         android:layout_height="194dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/fleur3" />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:id="@+id/message"

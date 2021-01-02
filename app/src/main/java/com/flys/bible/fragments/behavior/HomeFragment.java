@@ -42,11 +42,11 @@ public class HomeFragment extends AbstractFragment {
     protected ProgressBar progressBar;
 
     private HomeAdapter homeAdapter;
-    private List<DailyVerset> listmodels;
-    boolean isScrolling = false;
-    int currentItems, totalItems, scrollOutItems;
+
+    private List<DailyVerset> listModels;
+
     LinearLayoutManager linearLayoutManager;
-    final static int page = 2;
+
     static int lastPosition = 0;
 
     @Bean(DailyVersetDaoImpl.class)
@@ -72,7 +72,7 @@ public class HomeFragment extends AbstractFragment {
     protected void initFragment(CoreState previousState) {
         //Récupération des dailyversets de la base de données
         try {
-            listmodels = dailyVersetDao.getAll();
+            listModels = dailyVersetDao.getAll();
         } catch (DaoException e) {
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class HomeFragment extends AbstractFragment {
         //Daily verset is downloaded?
         if (FileUtils.fileExist("bible", day + ".png", activity)) {
             //listmodels.addAll(session.getDailyVersets());
-            homeAdapter = new HomeAdapter(listmodels, activity);
+            homeAdapter = new HomeAdapter(listModels, activity);
             recyclerView.setAdapter(homeAdapter);
             recyclerView.setLayoutManager(linearLayoutManager);
         } else {
@@ -99,14 +99,14 @@ public class HomeFragment extends AbstractFragment {
             mainActivity.setUrlServiceWebJson("https://developers.youversionapi.com/1.0");
             executeInBackground(mainActivity.getDailyVerset(day, 1), result -> {
                 DailyVerset response = Utils.dtoToDailyVerset(result);
-                homeAdapter = new HomeAdapter(listmodels, activity);
+                homeAdapter = new HomeAdapter(listModels, activity);
                 recyclerView.setAdapter(homeAdapter);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 mainActivity.setUrlServiceWebJson("http:" + response.getImage().getUrl().replace("{width}", "500").replace("{height}", "500"));
                 mainActivity.setAuthorization(false);
                 executeInBackground(mainActivity.getDailyVersetImage(), res -> {
                     FileUtils.saveToInternalStorage(res, "bible", response.getDay() + ".png", activity);
-                    listmodels.add(response);
+                    listModels.add(response);
                     homeAdapter.notifyDataSetChanged();
 
                     try {
@@ -143,7 +143,7 @@ public class HomeFragment extends AbstractFragment {
             executeInBackground(mainActivity.getDailyVersetImage(), res -> {
                 Log.e(getClass().getSimpleName(), "***********  first image name length*****************" + res.length);
                 FileUtils.saveToInternalStorage(res, "bible", dailyVersets.get(finalI).getVerse().getHuman_reference() + ".png", activity);
-                listmodels.add(dailyVersets.get(finalI));
+                listModels.add(dailyVersets.get(finalI));
                 homeAdapter.notifyDataSetChanged();
             });
             lastPosition++;

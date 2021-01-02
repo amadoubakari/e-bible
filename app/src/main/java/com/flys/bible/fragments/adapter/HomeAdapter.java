@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.flys.bible.R;
 import com.flys.bible.entities.DailyVerset;
 import com.flys.bible.utils.FileUtils;
@@ -41,6 +42,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holderview> {
         DailyVerset dailyVerset = dailyVersets.get(position);
         holder.title.setText(dailyVerset.getVerse().getHuman_reference());
         holder.message.setText(dailyVerset.getVerse().getText());
+        //Glide.with(context).load(FileUtils.loadImageFromStorage("bible", dailyVerset.getDay() + ".png", context)).into(holder.image);
         holder.image.setImageDrawable(FileUtils.loadImageFromStorage("bible", dailyVerset.getDay() + ".png", context));
     }
 

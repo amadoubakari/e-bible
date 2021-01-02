@@ -36,7 +36,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flys.bible.R;
-import com.flys.bible.activity.AudioActivity_;
 import com.flys.bible.architecture.custom.CustomTabLayout;
 import com.flys.bible.architecture.custom.IMainActivity;
 import com.flys.bible.architecture.custom.Session;
