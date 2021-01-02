@@ -193,7 +193,6 @@ public class FileUtils {
      */
     public static String saveToInternalStorage(Bitmap bitmapImage, String dirName, String fileName, Context context) {
         ContextWrapper cw = new ContextWrapper(context);
-        // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir(dirName, Context.MODE_PRIVATE);
         // Create imageDir
         File mypath = new File(directory, fileName);
@@ -201,6 +200,37 @@ public class FileUtils {
         if (mypath.exists()) {
             mypath.delete();
         }
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return mypath.getAbsolutePath();
+    }
+
+    /**
+     * @param bytes
+     * @param dirName
+     * @param fileName
+     * @param context
+     * @return
+     */
+    public static String saveToInternalStorage(byte[] bytes, String dirName, String fileName, Context context) {
+        Bitmap bitmapImage = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        ContextWrapper cw = new ContextWrapper(EApplicationContext.getContext());
+        File directory = cw.getDir(dirName, Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath = new File(directory, fileName);
+
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
@@ -231,7 +261,7 @@ public class FileUtils {
 
         ContextWrapper cw = new ContextWrapper(context);
         File directory = cw.getDir(path, Context.MODE_PRIVATE);
-        path= directory.getAbsolutePath();
+        path = directory.getAbsolutePath();
         BitmapDrawable background = null;
         try {
             File f = new File(path, fileName);
@@ -271,14 +301,13 @@ public class FileUtils {
     }
 
     /**
-     *
      * @param context
      * @param uri
      * @return
      * @throws IOException
      */
-    public static Bitmap getBytes(Context context,Uri uri) throws IOException {
-        InputStream iStream =   context.getContentResolver().openInputStream(uri);
+    public static Bitmap getBytes(Context context, Uri uri) throws IOException {
+        InputStream iStream = context.getContentResolver().openInputStream(uri);
         ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
         int bufferSize = 1024;
         byte[] buffer = new byte[bufferSize];
@@ -287,7 +316,21 @@ public class FileUtils {
         while ((len = iStream.read(buffer)) != -1) {
             byteBuffer.write(buffer, 0, len);
         }
-        return  BitmapFactory.decodeByteArray(byteBuffer.toByteArray(), 0, byteBuffer.toByteArray().length);
+        return BitmapFactory.decodeByteArray(byteBuffer.toByteArray(), 0, byteBuffer.toByteArray().length);
 
+    }
+
+    /**
+     * Suppression d'un fichier existant
+     *
+     * @param fileName
+     * @param context
+     */
+    public static boolean fileExist(String dirName, String fileName, Context context) {
+        ContextWrapper cw = new ContextWrapper(context);
+        File directory = cw.getDir(dirName, Context.MODE_PRIVATE);
+        // Create imageDir
+        File file = new File(directory, fileName);
+        return file.exists();
     }
 }

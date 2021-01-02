@@ -1,16 +1,19 @@
 package com.flys.bible.architecture.core;
 
-import android.content.Intent;
+
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
+import com.flys.bible.Utils;
 import com.flys.bible.utils.CustomTypefaceSpan;
+import com.flys.tools.dialog.AbstractDialogActivity;
+import com.flys.tools.dialog.AbstractDialogFragmentInterface;
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.core.content.ContextCompat;
@@ -33,7 +36,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flys.bible.R;
-import com.flys.bible.activity.AudioActivity_;
 import com.flys.bible.architecture.custom.CustomTabLayout;
 import com.flys.bible.architecture.custom.IMainActivity;
 import com.flys.bible.architecture.custom.Session;
@@ -46,7 +48,7 @@ import java.io.IOException;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public abstract class AbstractActivity extends AppCompatActivity implements IMainActivity {
+public abstract class AbstractActivity extends AppCompatActivity implements IMainActivity, AbstractDialogFragmentInterface {
     // couche [DAO]
     private IDao dao;
     // la session
@@ -71,8 +73,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
     private DrawerLayout drawerLayout;
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
-
-    private CollapsingToolbarLayout collapsingToolbarLayout;
 
     private CircleImageView profile;
 
@@ -172,13 +172,12 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.main_content);
-
-        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
+        // ajout de la barre d'onglets à la barre d'application
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         // image d'attente ?
         if (IS_WAITING_ICON_NEEDED) {
             // on ajoute l'image d'attente
@@ -202,8 +201,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
             // création barre d'onglets
             tabLayout = new CustomTabLayout(this);
             tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_text));
-            // ajout de la barre d'onglets à la barre d'application
-            AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
             appBarLayout.addView(tabLayout);
             // gestionnaire d'évt de la barre d'onglets
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -287,8 +284,15 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
                         case R.id.menu_home:
                             home();
                             break;
+                        case R.id.menu_bible:
+                            bible();
+                            break;
                         case R.id.menu_audio_bible:
-                            startActivity(new Intent(AbstractActivity.this, AudioActivity_.class));
+                            navigateToView(5, ISession.Action.SUBMIT);
+                            //startActivity(new Intent(AbstractActivity.this, AudioActivity_.class));
+                            break;
+                        case R.id.menu_recommander:
+                            showEditDialog();
                             break;
                         default:
                             break;
@@ -375,6 +379,19 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
     }
 
 
+    //Récupération du texte issu de la boite de dialogue
+    @Override
+    public void receivedDate(String data) {
+        Utils.shareText(this, "Dubun GUIZIGA", data + "  https://play.google.com/store/apps/details?id=com.sprintpaycommunity", "Recommandation de l'application.");
+    }
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        AbstractDialogActivity dialogActivity = new AbstractDialogActivity("Recommandation", R.mipmap.ic_launcher,R.style.AlertDialogTheme,R.style.BodyTextStyle);
+        dialogActivity.show(fm, "fragment_edit_name");
+    }
+
+
     // le gestionnaire de fragments --------------------------------
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -415,7 +432,7 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
      * @param mi
      */
     private void applyFontToMenuItem(MenuItem mi) {
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/poppins_light.ttf");
+        Typeface font = ResourcesCompat.getFont(this,R.font.google_sans);
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mi.setTitle(mNewTitle);
@@ -435,4 +452,6 @@ public abstract class AbstractActivity extends AppCompatActivity implements IMai
     protected abstract int getFirstView();
 
     protected abstract boolean isCollapse();
+
+
 }

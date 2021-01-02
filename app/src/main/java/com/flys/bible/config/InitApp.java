@@ -2,8 +2,6 @@ package com.flys.bible.config;
 
 import android.util.Log;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,10 +15,7 @@ import com.flys.bible.dao.db.impl.ChapitreDaoImpl;
 import com.flys.bible.dao.db.impl.TitreDaoImpl;
 import com.flys.bible.dao.db.impl.VersetDaoImpl;
 import com.flys.bible.entities.AppConfig;
-import com.flys.bible.entities.Chapitre;
 import com.flys.bible.entities.Livre;
-import com.flys.bible.entities.Titre;
-import com.flys.bible.entities.Verset;
 import com.flys.bible.utils.EApplicationContext;
 import com.flys.generictools.dao.daoException.DaoException;
 
@@ -30,6 +25,11 @@ import org.androidannotations.annotations.EBean;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableEmitter;
+import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 
 @EBean(scope = EBean.Scope.Singleton)
 public class InitApp implements Serializable {
@@ -64,42 +64,99 @@ public class InitApp implements Serializable {
         return result;
     }
 
+    public Observable initialize() {
+        return Observable.create((ObservableOnSubscribe<Boolean>) emitter -> {
+            //AppConfig config = null;
+            try {
+                //Chargement de la base de données
+                ObjectMapper mapper = new ObjectMapper();
+                String jsonInput = Utils.loadJSONFromAsset(EApplicationContext.getContext(), "new_testament/mathieu.json");
+
+                Livre livre = mapper.readValue(jsonInput, new TypeReference<Livre>() {
+                });
+
+                livre.getChapitres().forEach(chapitre -> {
+                    try {
+                        chapitreDao.save(chapitre).getTitres().forEach(titre -> {
+                            titre.setChapitre(chapitre);
+                            try {
+                                titreDao.save(titre).getVersets().forEach(verset -> {
+                                    verset.setTitre(titre);
+                                    try {
+                                        versetDao.save(verset);
+                                        emitter.onNext(true);
+                                    } catch (DaoException e) {
+                                        emitter.onError(e);
+                                        e.printStackTrace();
+                                    }
+                                });
+                            } catch (DaoException e) {
+                                emitter.onError(e);
+                                e.printStackTrace();
+                            }
+                        });
+                    } catch (DaoException e) {
+                        emitter.onError(e);
+                        e.printStackTrace();
+                    }
+                });
+                //config = appConfigDao.save(new AppConfig(true));
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                emitter.onError(e);
+                e.printStackTrace();
+            }
+            emitter.onComplete();
+        });
+    }
+
     /**
-     * @return
+     * @return Elle permet d'installer notre application.
      */
     public boolean install() {
         AppConfig config = null;
         try {
             //Chargement de la base de données
             ObjectMapper mapper = new ObjectMapper();
-            String jsonInput = Utils.loadJSONFromAsset(EApplicationContext.getContext(), "new_testament/mathieu.json");
+            //String jsonInput = Utils.loadJSONFromAsset(EApplicationContext.getContext(), "new_testament/mathieu.json");
 
-            Livre livre = mapper.readValue(jsonInput, new TypeReference<Livre>() {
+            Livre livre = mapper.readValue(EApplicationContext.getContext().getAssets().open("new_testament/mathieu.json"), new TypeReference<Livre>() {
             });
-            List<Chapitre> listModels = livre.getChapitres();
 
-            for (Chapitre chapitre: listModels
-                 ) {
-                Chapitre chapitre1=chapitreDao.save(chapitre);
-                for (Titre titre:chapitre1.getTitres()
-                     ) {
-                    titre.setChapitre(chapitre1);
-                    Titre titre1=titreDao.save(titre);
-                    for (Verset verset: titre1.getVersets()
-                         ) {
-                        verset.setTitre(titre1);
-                        versetDao.save(verset);
-                    }
+            livre.getChapitres().forEach(chapitre -> {
+                try {
+                    chapitreDao.save(chapitre).getTitres().forEach(titre -> {
+                        titre.setChapitre(chapitre);
+                        try {
+                            titreDao.save(titre).getVersets().forEach(verset -> {
+                                verset.setTitre(titre);
+                                try {
+                                    versetDao.save(verset);
+                                } catch (DaoException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                        } catch (DaoException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                } catch (DaoException e) {
+                    e.printStackTrace();
                 }
-            }
+            });
+
+
             config = appConfigDao.save(new AppConfig(true));
         } catch (DaoException e) {
             Log.e(getClass().getSimpleName(), "dao exception" + e.getMessage());
-        }catch (JsonMappingException e) {
+        } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return config.isInstalled();
     }
+
+
 }

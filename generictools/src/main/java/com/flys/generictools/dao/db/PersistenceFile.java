@@ -35,7 +35,7 @@ public class PersistenceFile implements Serializable {
         Entities entities = new Entities();
         ObjectMapper mapper = new ObjectMapper();
         String jsonInput = Utils.loadJSONFromAsset(context, "persistence.json");
-        Log.e(getClass().getSimpleName(), "result:" + jsonInput);
+        //Log.e(getClass().getSimpleName(), "result:" + jsonInput);
         try {
             entities = mapper.readValue(jsonInput, Entities.class);
 

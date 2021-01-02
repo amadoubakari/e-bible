@@ -5,6 +5,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.flys.bible.entities.Titre;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.SortedSet;
 
 /**
  * Created by User on 21/09/2018.
@@ -26,7 +28,6 @@ public class ChapitreAdapter extends PagerAdapter {
 
     private Context context;
     private List<Chapitre> chapitres;
-    private TitreAdapter titreAdapter;
 
     public ChapitreAdapter(Context context, List<Chapitre> chapitres) {
         this.context = context;
@@ -44,7 +45,7 @@ public class ChapitreAdapter extends PagerAdapter {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
-        titreAdapter = new TitreAdapter(new ArrayList(chapitre.getTitres()) , context);
+        TitreAdapter titreAdapter = new TitreAdapter(new ArrayList(chapitre.getTitres()) , context);
         recyclerView.setAdapter(titreAdapter);
         view.addView(myImageLayout, 0);
         return myImageLayout;
@@ -67,7 +68,7 @@ public class ChapitreAdapter extends PagerAdapter {
     }
 
     public void setFilter(List<Chapitre> listModelsTasks) {
-        chapitres = new ArrayList<>();
+        chapitres.clear();
         chapitres.addAll(listModelsTasks);
         notifyDataSetChanged();
 
@@ -77,5 +78,10 @@ public class ChapitreAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view.equals(object);
+    }
+
+    public void setChapitres(List<Chapitre> chapitres) {
+        this.chapitres = chapitres;
+        notifyDataSetChanged();
     }
 }

@@ -2,17 +2,24 @@ package com.flys.bible.architecture.custom;
 
 import android.content.Context;
 import android.graphics.Typeface;
+
+import com.flys.bible.R;
+import com.flys.bible.utils.EApplicationContext;
 import com.google.android.material.tabs.TabLayout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.core.content.res.ResourcesCompat;
+
 public class CustomTabLayout extends TabLayout {
   private Typeface mTypeface;
+  private Context context;
 
   public CustomTabLayout(Context context) {
     super(context);
+    this.context=context;
     init();
   }
 
@@ -27,7 +34,7 @@ public class CustomTabLayout extends TabLayout {
   }
 
   private void init() {
-    mTypeface = Typeface.createFromAsset(getContext().getAssets(), "font/poppins_light.ttf");
+    mTypeface = ResourcesCompat.getFont(context, R.font.google_sans);
   }
 
   @Override

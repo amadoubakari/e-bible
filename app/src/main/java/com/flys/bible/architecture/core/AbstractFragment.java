@@ -282,20 +282,9 @@ public abstract class AbstractFragment extends Fragment {
           // consommation résultat
           consumeResult,
           // consommation exception
-          new Action1<Throwable>() {
-            @Override
-            public void call(Throwable th) {
-              consumeThrowable(th);
-            }
-          },
+                th -> consumeThrowable(th),
           // fin de tâche
-          new Action0() {
-
-            @Override
-            public void call() {
-              endOfTask();
-            }
-          }));
+                () -> endOfTask()));
       } catch (Throwable th) {
         consumeThrowable(th);
       }

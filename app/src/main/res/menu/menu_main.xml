@@ -7,7 +7,8 @@
         android:title="Connexion" />
     <item
         android:id="@+id/search"
-        android:icon="@drawable/ic_search_white_24dp"
+        android:icon="@drawable/ic_search_24px"
+        android:iconTint="@color/colorPrimary"
         android:orderInCategory="300"
         android:title="Rechercher"
         app:actionViewClass="androidx.appcompat.widget.SearchView"

@@ -3,11 +3,13 @@ package com.flys.bible.entities;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Comparator;
+
 /**
  * Created by AMADOU BAKARI on 08/09/2018.
  */
 @DatabaseTable(tableName = "verset")
-public class Verset extends BaseEntity {
+public class Verset extends BaseEntity implements Comparable<Verset>, Comparator<Verset> {
 
     @DatabaseField
     private int numero;
@@ -56,5 +58,15 @@ public class Verset extends BaseEntity {
                 ", description='" + description + '\'' +
                 ", titre=" + titre +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Verset o) {
+        return this.getId().compareTo(o.getId());
+    }
+
+    @Override
+    public int compare(Verset o1, Verset o2) {
+        return o2.numero-o1.numero;
     }
 }

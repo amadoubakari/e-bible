@@ -2,13 +2,20 @@ package com.flys.bible;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
+
+import com.flys.bible.dto.DailyVersetDto;
+import com.flys.bible.entities.DailyVerset;
+import com.flys.bible.entities.DailyVersetContent;
+import com.flys.bible.entities.DailyVersetImage;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 /**
@@ -77,4 +84,31 @@ public class Utils implements Serializable {
         context.startActivity(Intent.createChooser(share, "Share Image!"));
     }
 
+    /**
+     * to calculate the dimensions of the bitmap
+     *
+     * @param bitmap
+     * @return
+     */
+    public int getSquareCropDimensionForBitmap(Bitmap bitmap) {
+        //use the smallest dimension of the image to crop to
+        return Math.min(bitmap.getWidth(), bitmap.getHeight());
+    }
+
+    public static DailyVerset dtoToDailyVerset(DailyVersetDto dailyVersetDto){
+        String fsm=getStingFromArraylistOfString(dailyVersetDto.getVerse().getUsfms()).toString();
+        DailyVersetContent dailyVersetContent=new DailyVersetContent(dailyVersetDto.getVerse().getUrl(),dailyVersetDto.getVerse().getHuman_reference(),dailyVersetDto.getVerse().getHtml(),fsm,dailyVersetDto.getVerse().getText());
+        DailyVerset dailyVerset=new DailyVerset(new DailyVersetImage(dailyVersetDto.getImage().getUrl(),dailyVersetDto.getImage().getAttribution()),dailyVersetDto.getDay(),dailyVersetContent);
+        return dailyVerset;
+    }
+
+    public static StringBuilder getStingFromArraylistOfString(ArrayList<String> strings){
+
+       StringBuilder result=new StringBuilder();
+        for (String s:strings
+             ) {
+            result.append(s);
+        }
+        return result;
+    }
 }

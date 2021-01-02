@@ -22,10 +22,10 @@ public interface IMainActivity extends IDao {
   boolean IS_DEBUG_ENABLED = true;
 
   // délai maximal d'attente de la réponse du serveur
-  int TIMEOUT = 1000;
+  int TIMEOUT = 1000000;
 
   // délai d'attente avant exécution de la requête client
-  int DELAY = 0;
+  int DELAY = 2000;
 
   // authentification basique
   boolean IS_BASIC_AUTHENTIFICATION_NEEDED = false;
@@ -37,13 +37,15 @@ public interface IMainActivity extends IDao {
   boolean ARE_TABS_NEEDED = false;
 
   // image d'attente
-  boolean IS_WAITING_ICON_NEEDED = false;
+  boolean IS_WAITING_ICON_NEEDED = true;
 
   // nombre de fragments de l'application
-  int FRAGMENTS_COUNT = 5;
+  int FRAGMENTS_COUNT = 6;
 
   // todo ajoutez ici vos constantes et autres méthodes
   void settings();
 
   void home();
+
+  void bible();
 }

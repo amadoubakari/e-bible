@@ -1,5 +1,5 @@
 #
-# generated on 2019/01/21 12:00:43
+# generated on 2020/06/06 01:00:15
 #
 # --table-start--
 dataClass=com.flys.bible.entities.Testament
@@ -95,6 +95,78 @@ generatedId=true
 dataClass=com.flys.bible.entities.Livre
 tableName=livre
 # --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.flys.bible.entities.DailyVerset
+tableName=dailyVerset
+# --table-fields-start--
+# --field-start--
+fieldName=image
+columnName=image
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=day
+# --field-end--
+# --field-start--
+fieldName=verse
+columnName=verse
+foreign=true
+foreignAutoRefresh=true
+maxForeignAutoRefreshLevel=2
+# --field-end--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.flys.bible.entities.DailyVersetContent
+tableName=dailyVersetContent
+# --table-fields-start--
+# --field-start--
+fieldName=url
+# --field-end--
+# --field-start--
+fieldName=human_reference
+# --field-end--
+# --field-start--
+fieldName=html
+# --field-end--
+# --field-start--
+fieldName=usfms
+dataPersister=SERIALIZABLE
+# --field-end--
+# --field-start--
+fieldName=text
+# --field-end--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.flys.bible.entities.DailyVersetImage
+tableName=dailyVersetImage
+# --table-fields-start--
+# --field-start--
+fieldName=url
+# --field-end--
+# --field-start--
+fieldName=attribution
+# --field-end--
 # --field-start--
 fieldName=id
 generatedId=true

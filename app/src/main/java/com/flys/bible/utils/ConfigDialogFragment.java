@@ -1,8 +1,10 @@
 package com.flys.bible.utils;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,6 @@ public class ConfigDialogFragment extends DialogFragment {
         ConfigDialogFragment frag = new ConfigDialogFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
-
         //Put sérialization
         frag.setArguments(args);
         return frag;
@@ -34,10 +35,7 @@ public class ConfigDialogFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.dialog_config_fragment_layout, container);
-
-
     }
 
     @Override
@@ -57,8 +55,8 @@ public class ConfigDialogFragment extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Get field from view
-        mEditText =  view.findViewById(R.id.title);
-        save =  view.findViewById(R.id.save);
+        mEditText = view.findViewById(R.id.title);
+        save = view.findViewById(R.id.save);
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "AMADOU BAKARI");
         mEditText.setText(title);

@@ -5,26 +5,27 @@
     android:background="@color/grey_200"
     android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@color/white"
             android:orientation="horizontal"
+            android:paddingTop="5dp"
             android:paddingBottom="10dp"
-            android:paddingTop="5dp">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/chapitre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/poppins_light"
+                android:fontFamily="@font/google_sans"
                 android:paddingLeft="20dp"
                 android:text="Chapitre 1"
                 android:textColor="@color/grey_500"
@@ -37,6 +38,24 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:text=". . ." />
+        </LinearLayout>
+
+
     </LinearLayout>
 </ScrollView>
 

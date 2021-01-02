@@ -1,1 +1,1 @@
-include ':app', ':user-authentication', ':generictools'
+include ':app', ':user-authentication', ':generictools', ':common-tools'
